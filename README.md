@@ -2,7 +2,7 @@
 
 Buks é um sistema de gerenciamento de livros, onde é possível cadastrar, atualizar, consultar e excluir registros de livros.
 
-Além do gerenciamento de livros, objetivo principal, o usuário, seja de uma livraria, de sebos, ou de uma biblioteca, pode gerenciar suas compras e vendas, registros de clientes, de funcionários, de outros usuários e de fornecedores também.
+Além do gerenciamento de livros, objetivo principal, o usuário pode gerenciar suas compras e vendas, registros de clientes, de funcionários, de outros usuários e de fornecedores também, assim pode ser utilizado por livrarias, lojas de sebo, biblioteca ou algo que inclua tudo isso.
 
 ## Estrutura de diretório
 
@@ -11,7 +11,14 @@ Logo abaixo, confira a estrutura de diretório do sistema Buks:
 ```text
 buks/
 ├──src/
-|    └──outros...
+|    ├──buks/
+|    |  ├──buks/
+|    |  |  ├──__init__.py
+|    |  |  ├──settings.py
+|    |  |  ├──urls.py
+|    |  |  └──wsgi.py
+|    |  └──manage.py
+|    └──.gitignore
 └──README.md
 ```
 
