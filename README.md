@@ -10,15 +10,18 @@ Logo abaixo, confira a estrutura de diretório do sistema Buks:
 
 ```text
 buks/
+├──docs/
+|  └──padroes_adotados/
+|     └──regras_de_verificacao_e_analise_de_requisitos.md
 ├──src/
-|    ├──buks/
-|    |  ├──buks/
-|    |  |  ├──__init__.py
-|    |  |  ├──settings.py
-|    |  |  ├──urls.py
-|    |  |  └──wsgi.py
-|    |  └──manage.py
-|    └──.gitignore
+|  ├──buks/
+|  |  ├──buks/
+|  |  |  ├──__init__.py
+|  |  |  ├──settings.py
+|  |  |  ├──urls.py
+|  |  |  └──wsgi.py
+|  |  └──manage.py
+|  └──.gitignore
 └──README.md
 ```
 
