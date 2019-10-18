@@ -9,7 +9,7 @@
 | Identificação | [RF-002] Cadastrar livro |
 |--|--|
 | Casos de Uso Relacionados | **_CSU-XXX_** |
-| Descrição | O sistema deverá prover ao usuário _logado_  a opção de cadastrar um livro. Os campos a serem cadastrados são:<br><br><ul><li>ISBN</li><li>Título</li><li>Subtítulo</li><li>Autor</li><li>Editora</li><li>Edição</li><li>Ano</li><li>Nº de páginas</li><li>Gênero</li><li>Novo ou usuado (binário)</li><li>Sinopse</li><li>Preço de compra</li><li>Preço de venda</li></ul>|
+| Descrição | O sistema deverá prover ao usuário _logado_  a opção de cadastrar um livro. Os campos a serem cadastrados são:<br><br><ul><li>ISBN</li><li>Capa</li><li>Título</li><li>Subtítulo</li><li>Autor</li><li>Editora</li><li>Edição</li><li>Ano</li><li>Nº de páginas</li><li>Gênero</li><li>Novo ou usuado (binário)</li><li>Sinopse</li><li>Preço de compra</li><li>Preço de venda</li></ul>|
 
 | Identificação | [RF-003] Alterar livro |
 |--|--|
@@ -46,7 +46,29 @@
 | Casos de Uso Relacionados | **_CSU-XXX_** |
 | Descrição | O sistema deverá prover ao usuário _logado_ a opção de excluir um empréstimo ou mais a partir da busca filtrada correspondente a um dos campos do registro do mesmo. |
 
-| Identificação | [RF-XXX] Título do requisito |
+| Identificação | [RF-010] Comprar livro |
 |--|--|
 | Casos de Uso Relacionados | **_CSU-XXX_** |
-| Descrição | Texto descritivo do RF, inclusive destaque dos atributos. |
+| Descrição | O sistema deverá prover ao usuário _logado_ a opção de realizar uma compra de um ou mais livros. Os campos a serem cadastrados são:<br><br><ul><li>ID</li><li>Data</li><li>Fornecedor</li><li>Livro</li><li>Preço unitário</li><li>Quantidade</li><li>Preço total</li><li>Subtotal</li><li>Desconto</li><li>Total</li></ul> |
+
+| Identificação | [RF-011] Consultar compra |
+|--|--|
+| Casos de Uso Relacionados | **_CSU-XXX_** |
+| Descrição | O sistema deverá prover ao usuário _logado_ a opção de uma compra ou vários pelos filtros: ID, data, fornecedor, total. |
+
+| Identificação | [RF-012] Cadastrar cliente |
+|--|--|
+| Casos de Uso Relacionados | **_CSU-XXX_** |
+| Descrição | O sistema deverá prover ao usuário _logado_ a opção de cadastrar cliente. Os campos a serem cadastrados são:<br><br><ul><li>CPF</li><li>Nome</li><li>Data de nascimento</li><li>E-mail</li><li>Celular</li></ul> |
+
+| Identificação | [RF-013] Alterar cliente |
+|--|--|
+| Casos de Uso Relacionados | **_CSU-XXX_** |
+| Descrição | O sistema deverá prover ao usuário _logado_ a opção de alterar um cliente cadastrado. Todos os campos podem ser alterados. |
+
+| Identificação | [RF-014] Consultar cliente |
+|--|--|
+| Casos de Uso Relacionados | **_CSU-XXX_** |
+| Descrição | O sistema deverá prover ao usuário _logado_ a opção de consultar um cliente ou vários pelos filtros que correspondem a um dos campos do registro do mesmo. |
+
+## Requisitos Não-Funcionais
