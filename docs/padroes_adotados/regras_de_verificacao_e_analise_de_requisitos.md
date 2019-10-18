@@ -17,7 +17,7 @@
 #### Requisitos Não-Funcionais
 | Identificação | [RNF-XXX] Título do requisito |
 |--|--|
-| Categoria | Categoria pode ser: usabilidade, desempenho ou segurança |
+| Categoria | Categoria pode ser: disponibilidade, compatibilidade, padrão, usabilidade, desempenho ou segurança |
 | Descrição | Texto descritivo do RNF. |
 
 > Onde XXX representa o número do RF, RNF ou do caso de uso.
