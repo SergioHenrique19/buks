@@ -71,4 +71,24 @@
 | Casos de Uso Relacionados | **_CSU-XXX_** |
 | Descrição | O sistema deverá prover ao usuário _logado_ a opção de consultar um cliente ou vários pelos filtros que correspondem a um dos campos do registro do mesmo. |
 
-## Requisitos Não-Funcionais
+## Requisitos Não-Funcionais (RNF)
+
+| Identificação | [RNF-001] Funcionamento do sistema offline |
+|--|--|
+| Categoria | Disponibilidade |
+| Descrição | O sistema deverá funcionar 24h/dia, logo, é necessário que o mesmo funcione com ou sem conexão à rede. |
+
+| Identificação | [RNF-002] Tela de confirmação |
+|--|--|
+| Categoria | Padrão |
+| Descrição | O sistema deverá aprensentar uma tela de confirmação após o usuário realizar qualquer ação que envolva cadastros, alterações e exclusões. |
+
+| Identificação | [RNF-003] Compatibilidade com navegadores Chrome e Firefox |
+|--|--|
+| Categoria | Padrão |
+| Descrição | O sistema deverá ser compatível para ser utilizado nos navegadores Google Chrome e Mozilla Firefox. |
+
+| Identificação | [RNF-004] Uso de design responsivo |
+|--|--|
+| Categoria | Usabilidade |
+| Descrição | O sistema será construído para rodar em ambiente web e deverá possuir design responsivo para funcionar corretamente em browser, tablet ou celular. |
