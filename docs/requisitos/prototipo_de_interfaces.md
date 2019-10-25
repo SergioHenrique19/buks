@@ -1,7 +1,7 @@
 # Buks - Protótipo de Interfaces
 
 ### Mapa de navegação
-![mapa de navegacao]()
+![mapa de navegacao](./interfaces/mapa_de_navegacao.png)
 
 ---
 ### Login
