@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../principal.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="nav-left">
+                    <div class="nav-text-primary">
+                        <h2>Buks</h2>
+                        <p>A biblioteca que move o mundo...</p>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div class="my-account">
+                        <img src="../assets/my-account.svg" alt="">
+                        <p>Minha Conta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="list-content">
+                <ul>
+                    <li><a class="tablinks" title="Estante" id="defaultopenPage">Estantes</a></li>
+                    <li><a class="tablinks" title="Livros">Livros</a></li>
+                    <li><a class="tablinks" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks active" title="Empréstimo">Empréstimo</a></li>
+                    <li><a class="tablinks" title="Compras">Compras</a></li>
+                    <li><a class="tablinks" title="Recebimento">Recebimento</a></li>
+                    <li><a class="tablinks" title="Funcionarios">Funcionarios</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="tabcontent" id="emprestimo-content">
+                <div class="emprestimo">
+                    <h1>Empréstimo de Livros - opções</h1>
+                    <div class="emprestimo-option-1">
+                        <div class="emprestimo-option-button">
+                            <button type="button" class="btn-emprestimo">Cadastrar emprestimo</button>
+                            <button type="button" class="btn-emprestimo">Alterar emprestimo</button>
+                            <button type="button" class="btn-emprestimo activeButton">Consultar emprestimo</button>
+                            <button type="button" class="btn-emprestimo">Excluir emprestimo</button>
+                        </div>
+                    </div>
+                    <div class="emprestimo-pages">
+                        <div class="emprestimoContent" id="consultaEmprestimo">
+                            <div class="consulta-content">
+                                <div class="consulta-content-content">
+                                    <label for="">Qual Empréstimo você procura?</label>
+                                    <div class="row-consulta">
+                                        <form action="">
+                                            <input type="text">
+                                            <button type="submit">&#128269</button>
+                                        </form>
+                                    </div>
+                                    <div class="search-result-procura">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

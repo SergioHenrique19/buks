@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="principal.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="nav-left">
+                    <div class="nav-text-primary">
+                        <h2>Buks</h2>
+                        <p>A biblioteca que move o mundo...</p>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div class="my-account">
+                        <img src="assets/my-account.svg" alt="">
+                        <p>Minha Conta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="list-content">
+                <ul>
+                    <li><a class="tablinks" onclick="openPage(event, 'estante-content')" title="Estante" id="defaultopenPage">Estantes</a></li>
+                    <li><a class="tablinks" onclick="openPage(event, 'livro-content')" title="Livros">Livros</a></li>
+                    <li><a class="tablinks" onclick="openPage(event, 'cliente-content')" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks" onclick="openPage(event, 'emprestimo-content')" title="Empréstimo">Empréstimo</a></li>
+                    <li><a class="tablinks" onclick="openPage(event, 'compra-content')" title="Compras">Compras</a></li>
+                    <li><a class="tablinks" onclick="openPage(event, 'recebimento-content')" title="Recebimento">Recebimento</a></li>
+                    <li><a class="tablinks" onclick="openPage(event, 'funcionario-content')" title="Funcionarios">Funcionarios</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="tabcontent" id="estante-content">
+                <div class="estante">
+                    <div class="gallery">
+                        <div class="galery-books">
+                            <div class="book">
+                                <img src="assets/livro1.png" alt="">
+                                <p>Still Holding</p>
+                                <span>Phill Huntsberry</span>
+                            </div>
+                            <div class="book">
+                                <img src="assets/livro2.png" alt="">
+                                <p>Silent Women</p>
+                                <span>Aileen Nedd</span>
+                            </div>
+                            <div class="book">
+                                <img src="assets/livro3.png" alt="">
+                                <p>Sendless Summer</p>
+                                <span>Danny Alexander</span>
+                            </div>
+                            <div class="book">
+                                <img src="assets/livro4.png" alt="">
+                                <p>Foul Play</p>
+                                <span>Kent's Baxter</span>
+                            </div>
+                        </div>
+                        <div class="galery-books">
+                            <div class="book">
+                                <img src="assets/livro5.png" alt="">
+                                <p>Musing of Millner</p>
+                                <span>Kimberlin</span>
+                            </div>
+                            <div class="book">
+                                <img src="assets/livro6.png" alt="">
+                                <p>Pattern Maker</p>
+                                <span>Kerry Johnston</span>
+                            </div>
+                            <div class="book">
+                                <img src="assets/livro7.png" alt="">
+                                <p>Love at first click</p>
+                                <span>Michelle Anderson</span>
+                            </div>
+                            <div class="book">
+                                <img src="assets/livro8.png" alt="">
+                                <p>Jass in the Urban Jungle</p>
+                                <span>Cláudia Alves</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tabcontent" id="livro-content">
+                <div class="livro">
+                    <h1>Livros - opções</h1>
+                    <div class="livro-option">
+                        <div class="livro-option-button">
+                            <button type="button" class="btn-book" onclick="openOptionBook(event, 'cadastroLivro')" id="defaultBook">Cadastrar livro</button>
+                            <button type="button" class="btn-book" onclick="openOptionBook(event, 'alteraLivro')">Alterar livro</button>
+                            <button type="button" class="btn-book" onclick="openOptionBook(event, 'consultaLivro')">Consultar livro</button>
+                            <button type="button" class="btn-book" onclick="openOptionBook(event, 'excluirLivro')">Excluir livro</button>
+                        </div>
+                    </div>
+                    <div class="livro-pages">
+                        <div class="livroContent" id="cadastroLivro">
+                            <div class="cadastro-content">
+                                <div class="cadastro-form">
+                                    <form action="">
+                                        <div class="cadastro-form-left">
+                                            <label for="">ISBN</label>
+                                            <input type="text">
+                                            <label for="">Capa</label>
+                                            <input type="file">
+                                            <label for="">Titulo</label>
+                                            <input type="text">
+                                            <label for="">Subtítulo</label>
+                                            <input type="text">
+                                            <label for="">Autor</label>
+                                            <input type="text">
+                                            <label for="">Editora</label>
+                                            <input type="text">
+                                            <label for="">Edição</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="cadastro-form-right">
+                                            <label for="">Ano</label>
+                                            <input type="text">
+                                            <label for="">Nº de páginas</label>
+                                            <input type="text">
+                                            <label for="">Gênero</label>
+                                            <input type="text">
+                                            <label for="">Novo ou usuado (binário)</label>
+                                            <input type="text">
+                                            <label for="">Sinopse</label>
+                                            <input type="text">
+                                            <label for="">Preço de compra</label>
+                                            <input type="text">
+                                            <label for="">Preço de venda</label>
+                                            <input type="text">
+                                        </div>
+                                        <button type="reset">Cancelar</button>
+                                        <button type="submit">Cadastrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="livroContent" id="alteraLivro">
+                            <div class="altera-content">
+                                <div class="altera-form">
+                                    <form action="">
+                                        <div class="cadastro-form-left">
+                                            <label for="">ISBN</label>
+                                            <input type="text">
+                                            <label for="">Capa</label>
+                                            <input type="file">
+                                            <label for="">Titulo</label>
+                                            <input type="text">
+                                            <label for="">Subtítulo</label>
+                                            <input type="text">
+                                            <label for="">Autor</label>
+                                            <input type="text">
+                                            <label for="">Editora</label>
+                                            <input type="text">
+                                            <label for="">Edição</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="cadastro-form-right">
+                                            <label for="">Ano</label>
+                                            <input type="text">
+                                            <label for="">Nº de páginas</label>
+                                            <input type="text">
+                                            <label for="">Gênero</label>
+                                            <input type="text">
+                                            <label for="">Novo ou usuado (binário)</label>
+                                            <input type="text">
+                                            <label for="">Sinopse</label>
+                                            <input type="text">
+                                            <label for="">Preço de compra</label>
+                                            <input type="text">
+                                            <label for="">Preço de venda</label>
+                                            <input type="text">
+                                        </div>
+                                        <button type="reset">Cancelar</button>
+                                        <button type="submit">Alterar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="livroContent" id="consultaLivro">
+                            <div class="consulta-content">
+                                <div class="consulta-content-content">
+                                    <label for="">Qual Livro você procura?</label>
+                                    <div class="row-consulta">
+                                        <form action="">
+                                            <input type="text">
+                                            <button type="submit">&#128269</button>
+                                        </form>
+                                    </div>
+                                    <div class="search-result-procura">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="livroContent" id="excluirLivro">
+                            <div class="excluir-content">
+                                <div class="excluir-content-content">
+                                    <label for="">Qual Livro você deseja excluir ?</label>
+                                    <div class="row-consulta">
+                                        <form action="">
+                                            <input type="text">
+                                            <button type="submit">&#128269</button>
+                                        </form>
+                                    </div>
+                                    <div class="search-result-excluir">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tabcontent" id="cliente-content">
+                <div class="cliente">
+                    <h1>Cliente - opções</h1>
+                    <div class="cliente-option-1">
+                        <div class="cliente-option-button">
+                            <button type="button" class="btn-cliente" onclick="openOptionCliente(event, 'cadastroCliente')" id="defaultCliente">Cadastrar cliente</button>
+                            <button type="button" class="btn-cliente" onclick="openOptionCliente(event, 'alteraCliente')">Alterar cliente</button>
+                            <button type="button" class="btn-cliente" onclick="openOptionCliente(event, 'consultaCliente')">Consultar cliente</button>
+                        </div>
+                    </div>
+                    <div class="cliente-pages">
+                        <div class="clienteContent" id="cadastroCliente">
+                            <div class="cadastro-content">
+                                <div class="cadastro-form">
+                                    <form action="">
+                                        <div class="cadastro-form-left">
+                                            <label for="">CPF</label>
+                                            <input type="text">
+                                            <label for="">Nome</label>
+                                            <input type="text">
+                                            <label for="">Data de Nascimento</label>
+                                            <input type="date">
+                                        </div>
+                                        <div class="cadastro-form-right">
+                                            <label for="">Email</label>
+                                            <input type="text">
+                                            <label for="">Celular</label>
+                                            <input type="text">
+                                        </div>
+                                        <button type="reset">Cancelar</button>
+                                        <button type="submit">Cadastrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clienteContent" id="alteraCliente">
+                            <div class="altera-content">
+                                <div class="altera-form">
+                                    <form action="">
+                                        <div class="cadastro-form-left">
+                                            <label for="">CPF</label>
+                                            <input type="text">
+                                            <label for="">Nome</label>
+                                            <input type="text">
+                                            <label for="">Data de Nascimento</label>
+                                            <input type="date">
+                                        </div>
+                                        <div class="cadastro-form-right">
+                                            <label for="">Email</label>
+                                            <input type="text">
+                                            <label for="">Celular</label>
+                                            <input type="text">
+                                        </div>
+                                        <button type="reset">Cancelar</button>
+                                        <button type="submit">Alterar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clienteContent" id="consultaCliente">
+                            <div class="consulta-content">
+                                <div class="consulta-content-content">
+                                    <label for="">Qual Cliente deseja encontrar?</label>
+                                    <div class="row-consulta">
+                                        <form action="">
+                                            <input type="text">
+                                            <button type="submit">&#128269</button>
+                                        </form>
+                                    </div>
+                                    <div class="search-result-procura">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tabcontent" id="emprestimo-content">
+                <div class="emprestimo">
+                    <h1>Empréstimo de Livros - opções</h1>
+                    <div class="emprestimo-option-1">
+                        <div class="emprestimo-option-button">
+                            <button type="button" class="btn-emprestimo" onclick="openOptionEmprestimo(event, 'cadastroEmprestimo')" id="defaultEmprestimo">Cadastrar emprestimo</button>
+                            <button type="button" class="btn-emprestimo" onclick="openOptionEmprestimo(event, 'alteraEmprestimo')">Alterar emprestimo</button>
+                            <button type="button" class="btn-emprestimo" onclick="openOptionEmprestimo(event, 'consultaEmprestimo')">Consultar emprestimo</button>
+                            <button type="button" class="btn-emprestimo" onclick="openOptionEmprestimo(event, 'excluirEmprestimo')">Excluir emprestimo</button>
+                        </div>
+                    </div>
+                    <div class="emprestimo-pages">
+                        <div class="emprestimoContent" id="cadastroEmprestimo">
+                            <div class="cadastro-content">
+                                <div class="cadastro-form">
+                                    <form action="">
+                                        <div class="cadastro-form-left">
+                                            <label for="">ID</label>
+                                            <input type="text">
+                                            <label for="">Data e Hora</label>
+                                            <input type="text">
+                                            <label for="">Data de devolução</label>
+                                            <input type="text">
+                                            <label for="">Cliente</label>
+                                            <input type="text">
+                                            <label for="">Livro(s)</label>
+                                            <input type="text">
+                                            <label for="">Preço unitário</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="cadastro-form-right">
+                                            <label for="">Quantidade(s)</label>
+                                            <input type="text">
+                                            <label for="">Valor</label>
+                                            <input type="text">
+                                            <label for="">Forma de pagamento</label>
+                                            <input type="text">
+                                            <label for="">Desconto</label>
+                                            <input type="text">
+                                            <label for="">Valor total</label>
+                                            <input type="text">
+                                        </div>
+                                        <button type="reset">Cancelar</button>
+                                        <button type="submit">Cadastrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emprestimoContent" id="alteraEmprestimo">
+                            <div class="cadastro-content">
+                                <div class="cadastro-form">
+                                    <form action="">
+                                        <div class="cadastro-form-left">
+                                            <label for="">ID</label>
+                                            <input type="text">
+                                            <label for="">Data e Hora</label>
+                                            <input type="text">
+                                            <label for="">Data de devolução</label>
+                                            <input type="text">
+                                            <label for="">Cliente</label>
+                                            <input type="text">
+                                            <label for="">Livro(s)</label>
+                                            <input type="text">
+                                            <label for="">Preço unitário</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="cadastro-form-right">
+                                            <label for="">Quantidade(s)</label>
+                                            <input type="text">
+                                            <label for="">Valor</label>
+                                            <input type="text">
+                                            <label for="">Forma de pagamento</label>
+                                            <input type="text">
+                                            <label for="">Desconto</label>
+                                            <input type="text">
+                                            <label for="">Valor total</label>
+                                            <input type="text">
+                                        </div>
+                                        <button type="reset">Cancelar</button>
+                                        <button type="submit">Alterar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emprestimoContent" id="consultaEmprestimo">
+                            <div class="consulta-content">
+                                <div class="consulta-content-content">
+                                    <label for="">Qual Empréstimo você procura?</label>
+                                    <div class="row-consulta">
+                                        <form action="">
+                                            <input type="text">
+                                            <button type="submit">&#128269</button>
+                                        </form>
+                                    </div>
+                                    <div class="search-result-procura">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="emprestimoContent" id="excluirEmprestimo">
+                            <div class="excluir-content">
+                                <div class="excluir-content-content">
+                                    <label for="">Qual Empréstimo você deseja excluir ?</label>
+                                    <div class="row-consulta">
+                                        <form action="">
+                                            <input type="text">
+                                            <button type="submit">&#128269</button>
+                                        </form>
+                                    </div>
+                                    <div class="search-result-excluir">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="tabcontent" id="compra-content">
+                <div class="compra">
+                    <h1>Compras - opções</h1>
+                    <div class="compra-option-1">
+                        <div class="compra-option-button">
+                            <button type="button" class="btn-compra" onclick="openOptionCompra(event, 'cadastroCompra')" id="defaultCompra">Comprar livro</button>
+                            <button type="button" class="btn-compra" onclick="openOptionCompra(event, 'consultaCompra')">Consultar compra</button>
+                        </div>
+                    </div>
+                    <div class="compra-pages">
+                        <div class="compraContent" id="cadastroCompra">
+                            <div class="cadastro-content">
+                                <div class="cadastro-form">
+                                    <form action="">
+                                        <div class="cadastro-form-left">
+                                            <label for="">ID</label>
+                                            <input type="text">
+                                            <label for="">Data</label>
+                                            <input type="text">
+                                            <label for="">Fornecedor</label>
+                                            <input type="text">
+                                            <label for="">Livro</label>
+                                            <input type="text">
+                                            <label for="">Preço unitário</label>
+                                            <input type="text">
+                                        </div>
+                                        <div class="cadastro-form-right">
+                                            <label for="">Quantidade</label>
+                                            <input type="text">
+                                            <label for="">Preço total</label>
+                                            <input type="text">
+                                            <label for="">Subtotal</label>
+                                            <input type="text">
+                                            <label for="">Desconto</label>
+                                            <input type="text">
+                                            <label for="">Total</label>
+                                            <input type="text">
+                                        </div>
+                                        <button type="reset">Cancelar</button>
+                                        <button type="submit">Comprar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compraContent" id="consultaCompra">
+                            <div class="consulta-content">
+                                <div class="consulta-content-content">
+                                    <label for="">Qual Registro de Compra você procura?</label>
+                                    <div class="row-consulta">
+                                        <form action="">
+                                            <input type="text">
+                                            <button type="submit">&#128269</button>
+                                        </form>
+                                    </div>
+                                    <div class="search-result-procura">
+        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tabcontent" id="recebimento-content">
+                <div class="recebimento">
+                    <h1>Recebimentos</h1>
+                </div>    
+            </div>
+            <div class="tabcontent" id="funcionario-content">
+                <div class="funcionario">
+                    <h1>Funcionarios</h1>
+                </div>
+            </div>
+        </div>
+        
+    </div> 
+    <script src="principal.js"></script>
+</body>
+</html>
