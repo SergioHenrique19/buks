@@ -213,7 +213,6 @@ li a:hover {
 }
 
 .content #compra-content {
-    display: none;
     width: 100%;
     height: 100%;
     background: var(--white);
@@ -251,6 +250,7 @@ li a:hover {
     background: whitesmoke;
     display: grid;
     grid-template-rows: 50% 50%;
+    animation: up 1.5s;
 } 
 
 .gallery .galery-books {
@@ -848,35 +848,106 @@ form .cadastro-form-right {
     margin: 30px;
 }
 
-.compra .compra-option-1 {
-    width: 30%;
-    height: 10%;
-}
-
-.compra-option-1 .compra-option-button {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-
-.compra-option-button .btn-compra {
-    margin: 0 10px;
-    padding: 10px 20px;
-    border: none;
-    font-family: var(--font-text-large);
-    font-weight: bold;
-    font-size: 14px;
-}
-
 .compra-option-button .btn-compra:hover {
     cursor: pointer;
     background-color: var(--chocolate);
     color: var(--white);
 }
 
+/* PARTE DA TABELA DO COMPRA DE LIVROS *****************************************************/
+
+.compra-form {
+    width: 85%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--black);
+    font-family: var(--font-text-large);
+}
+
+.compra-form form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    padding: 0 40px;
+}
+
+.row-form-compra {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.row-form-compra-btn {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.row-form-compra label {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.row-form-compra input {
+    font-size: 15px;
+    padding: 0 10px;
+    letter-spacing: 2px;
+    color: var(--chocolate-dark);
+    text-align: center;
+}
+
+.row-form-compra input[type="date"] {
+    color: var(--chocolate);
+}
+
+.row-form-compra select {
+    background: var(--white);
+    color: var(--chocolate-dark);
+    border: none;
+    border-bottom: 2px var(--chocolate) solid;
+}
+
+.row-form-compra .btn-add {
+    width: 10%;
+    margin-left: 5%;
+    background: var(--chocolate);
+    border: none;
+    color: var(--white);
+    font-family: var(--font-text-large);
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.row-form-compra table {
+    background-color: whitesmoke;
+    width: 100%;
+    color: var(--chocolate);
+    font-size: 16px;
+    text-align: center;
+}
+
+.row-form-compra table th, td {
+    width: 20%;
+}
+
+.row-form-compra table, th, td{
+    border: 1px solid var(--black);
+}
+
+.row-form-compra select:focus {
+    outline: 0;
+}
+
+/* Fim do COMPRA DE LIVROS ************************************/
 
 .compra .compra-option {
     width: 100%;
@@ -957,4 +1028,8 @@ form .cadastro-form-right {
 @keyframes hover {
     from{ width: 30%; opacity: 0.2; }
     to{ width: 34%; opacity: 1; }
+}
+
+@keyframes up {
+    from{transform: translateY(300px); opacity: .5;} to{transform: translateY(0); opacity: 1;}
 }
