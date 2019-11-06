@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../principal.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                <div class="nav-left">
+                    <div class="nav-text-primary">
+                        <h2>Buks</h2>
+                        <p>A biblioteca que move o mundo...</p>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div class="my-account">
+                        <img src="../assets/my-account.svg" alt="">
+                        <p>Minha Conta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="list-content">
+                <ul>
+                    <li><a class="tablinks" href="../Estante/estante.html" title="Estante" id="defaultopenPage">Estantes</a></li>
+                    <li><a class="tablinks" href="#" title="Livros">Livros</a></li>
+                    <li><a class="tablinks" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks" title="Empréstimo">Empréstimo</a></li>
+                    <li><a class="tablinks active" title="Compras">Compras</a></li>
+                    <li><a class="tablinks" title="Recebimento">Recebimento</a></li>
+                    <li><a class="tablinks" title="Funcionarios">Funcionarios</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="tabcontent" id="livro-content">
+                <div class="livro">
+                    <h1>Compra de Livros</h1>
+                    <div class="livro-pages">
+                        <div class="livroContent" id="cadastroLivro">
+                            <div class="cadastro-content">
+                                <div class="compra-form">
+                                  <form action="">
+                                    <div class="row-form-compra">
+                                      <label for="compra-id">ID</label>
+                                      <input type="text" style="width: 20%" placeholder="Text box">
+                                      <label for="compra-data">Data</label>
+                                      <input type="date" style="width: 20%" placeholder="dd/mm//aaaa">
+                                      <label for="compra-id">Fornecedor</label>
+                                      <input type="text" style="width: 20%" placeholder="Nome do Fornecedor">
+                                    </div>
+
+                                    <div class="row-form-compra">
+                                      <label for="compra-livro-select">Livro</label>
+                                      <select name="" id="compra-livro-select" style="width: 20%; overflow: hidden;">
+                                        <option value="">Teste1</option>
+                                        <option value="">Teste2</option>
+                                        <option value="">Teste3</option>
+                                        <option value="">Teste4</option>
+                                        <option value="">Teste5</option>
+                                      </select>
+                                      <label for="compra-id">Preço Unitário</label>
+                                      <input type="text" style="width: 20%" placeholder="99,99">
+                                      <label for="compra-id">Quantidade</label>
+                                      <input type="text" style="width: 5%" placeholder="Qtde">
+                                      <button type="button" class="btn-add">Adicionar</button>
+                                    </div>
+
+                                    <div class="row-form-compra">
+                                      <table>
+                                        <thead>
+                                          <tr>
+                                            <th>Titulo do Livro</th>
+                                            <th>Preço Unitário</th>
+                                            <th>Quantidade</th>
+                                            <th>Preço Total</th>
+                                            <th>Excluir</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>one</td>
+                                            <td>two</td>
+                                            <td>three</td>
+                                            <td>four</td>
+                                            <td>five</td>
+                                          </tr>
+                                          <tr>
+                                            <td>one</td>
+                                            <td>two</td>
+                                            <td>three</td>
+                                            <td>four</td>
+                                            <td>five</td>
+                                          </tr>
+                                          <tr>
+                                            <td>one</td>
+                                            <td>two</td>
+                                            <td>three</td>
+                                            <td>four</td>
+                                            <td>five</td>
+                                          </tr>
+                                          <tr>
+                                            <td>one</td>
+                                            <td>two</td>
+                                            <td>three</td>
+                                            <td>four</td>
+                                            <td>five</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+
+                                    <div class="row-form-compra" style="margin-top: auto; margin-bottom: auto">
+                                      <label for="compra-sub">Subtotal</label>
+                                      <input type="text" style="width: 20%" placeholder="SUM(Pr)">
+                                      <label for="compra-desconto">Desconto</label>
+                                      <input type="text" style="width: 20%" placeholder="Desconto(R$)">
+                                      <label for="compra-total">Total</label>
+                                      <input type="text" style="width: 20%" placeholder="Subt - Desc">
+                                    </div>
+
+                                    <div class="row-form-compra-btn" style="margin-top: auto; margin-bottom: auto">
+                                      <button type="reset">Cancelar</button>
+                                      <button type="submit">Comprar</button>
+                                    </div>
+                                  </form>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div> 
+</body>
+</html>
