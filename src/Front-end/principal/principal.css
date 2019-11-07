@@ -213,7 +213,6 @@ li a:hover {
 }
 
 .content #compra-content {
-    display: none;
     width: 100%;
     height: 100%;
     background: var(--white);
@@ -251,6 +250,7 @@ li a:hover {
     background: whitesmoke;
     display: grid;
     grid-template-rows: 50% 50%;
+    animation: up 1.5s;
 } 
 
 .gallery .galery-books {
@@ -419,20 +419,20 @@ li a:hover {
     font-family: var(--font-text-large);
 }
 
-form label {
+.cadastro-form form label {
     font-size: 16px;
     font-weight: bold;
     color: var(--chocolate);
     letter-spacing: 2px;
 }
 
-form input {
+.cadastro-form form input {
     width: 90%;
     border: none;
     border-bottom: 2px var(--chocolate) solid;
 }
 
-form input:focus {
+.cadastro-form form input:focus {
     border-color: none !important;
     outline: 0;
     -webkit-box-shadow: none !important;
@@ -440,7 +440,7 @@ form input:focus {
     border-bottom: 2px var(--chocolate) solid;
 }
 
-form button[type="reset"] {
+.cadastro-form form button[type="reset"] {
     width: 120px;
     height: 35px;
     justify-self: center;
@@ -453,7 +453,7 @@ form button[type="reset"] {
     font-size: 17px;
 }
 
-form button[type="submit"] {
+.cadastro-form form button[type="submit"] {
     width: 120px;
     height: 35px;
     justify-self: center;
@@ -466,12 +466,12 @@ form button[type="submit"] {
     font-size: 17px;
 }
 
-form button:hover {
+.cadastro-form form button:hover {
     opacity: 0.5;
     cursor: pointer;
 }
 
-form .cadastro-form-left {
+.cadastro-form form .cadastro-form-left {
     width: 100%;
     height: 100%;
     display: flex;
@@ -479,7 +479,7 @@ form .cadastro-form-left {
     justify-content: center;
 }
 
-form .cadastro-form-right {
+.cadastro-form form .cadastro-form-right {
     width: 100%;
     height: 100%;
     display: flex;
@@ -848,35 +848,177 @@ form .cadastro-form-right {
     margin: 30px;
 }
 
-.compra .compra-option-1 {
-    width: 30%;
-    height: 10%;
-}
-
-.compra-option-1 .compra-option-button {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-
-.compra-option-button .btn-compra {
-    margin: 0 10px;
-    padding: 10px 20px;
-    border: none;
-    font-family: var(--font-text-large);
-    font-weight: bold;
-    font-size: 14px;
-}
-
 .compra-option-button .btn-compra:hover {
     cursor: pointer;
     background-color: var(--chocolate);
     color: var(--white);
 }
 
+/* PARTE DA TABELA DO COMPRA DE LIVROS *****************************************************/
+
+.compra-form {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--black);
+    font-family: var(--font-text-large);
+}
+
+.compra-form form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    padding: 0 40px;
+}
+
+.row-form-compra {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.row-form-compra-btn {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.row-form-compra label {
+    margin-left: 20px;
+    margin-right: 10px;
+    color: var(--chocolate-dark);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.row-form-compra input {
+    font-size: 15px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 4px;
+    border-bottom: 1px var(--chocolate) solid;
+    letter-spacing: 2px;
+    color: grey;
+    text-align: center;
+}
+
+.row-form-compra input[type="date"] {
+    background: var(--white) url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+    color: grey;
+}
+
+.row-form-compra input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+.row-form-compra input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+.row-form-compra select {
+    background: var(--white);
+    color: grey;
+    border: none;
+    border-bottom: 2px var(--chocolate) solid;
+    font-display: var(--font-text-large);
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.row-form-compra .btn-add {
+    width: 10%;
+    margin-left: 5%;
+    background: var(--chocolate);
+    border: none;
+    color: var(--white);
+    font-family: var(--font-text-large);
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.row-form-compra .btn-add:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.table-overflow {
+    margin-top: 30px;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+#table-compra {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 150px;
+    color: var(--chocolate);
+    font-size: 16px;
+    text-align: center;
+    border-collapse: collapse;
+    overflow-y: scroll;
+}
+
+#table-compra th  {
+    background: rgb(190, 115, 62);
+    color: var(--white);
+    margin: 0 40px;
+}
+
+#table-compra td {
+    color: var(--chocolate-dark);
+}
+
+#table-compra tr {
+    width: 100%;
+}
+
+#table-compra th, td{
+    border-bottom: 1px solid var(--chocolate-dark);
+}
+
+#table-compra tr:nth-child(even) { background: rgb(236, 230, 230);}
+
+.row-form-compra input:focus ,select:focus {
+    outline: 0;
+    border-bottom: 2px var(--chocolate-dark) solid;
+}
+
+.btn-cancel {
+    padding: 8px 25px;
+    border: none;
+    background: grey;
+    color: var(--white);
+    font-size: 15px;
+    font-family: var(--font-text-large);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.btn-compra {
+    padding: 8px 25px;
+    border: none;
+    background: var(--chocolate-dark);
+    color: var(--white);
+    font-size: 15px;
+    font-family: var(--font-text-large);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.btn-cancel:hover, .btn-compra:hover { opacity: 0.6; cursor: pointer; }
+
+/* Fim do COMPRA DE LIVROS ************************************/
 
 .compra .compra-option {
     width: 100%;
@@ -957,4 +1099,8 @@ form .cadastro-form-right {
 @keyframes hover {
     from{ width: 30%; opacity: 0.2; }
     to{ width: 34%; opacity: 1; }
+}
+
+@keyframes up {
+    from{transform: translateY(300px); opacity: .5;} to{transform: translateY(0); opacity: 1;}
 }
