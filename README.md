@@ -11,8 +11,15 @@ Logo abaixo, confira a estrutura de diretório do sistema Buks:
 ```text
 buks/
 ├──docs/
-|  └──padroes_adotados/
-|     └──regras_de_verificacao_e_analise_de_requisitos.md
+|  ├──padroes_adotados/
+|  |  └──regras_de_verificacao_e_analise_de_requ
+|  └──requisitos/
+|     ├──interfaces/
+|     ├──buks_documento_de_requisitos.doc
+|     ├──buks_usecase_diagram.asta
+|     ├──buks_usecase_diagram.png
+|     ├──doc_requistos.md
+|     └──prototipo_de_interfaces.md
 ├──src/
 |  ├──buks/
 |  |  ├──buks/
@@ -25,11 +32,17 @@ buks/
 └──README.md
 ```
 
+A pasta "**src**" terá todo o código desenvolvido no projeto, enquanto a pasta "**docs**" terá todos os documentos necessários de Engenharia de Software e/ou que auxiliem na documentação do projeto.
+
 ## Tecnologias Utilizadas
 
-* [Bootstrap](https://getbootstrap.com/) - web framework front-end
+* [HTML 5](https://www.w3schools.com/html/default.asp), [CSS 3](https://www.w3schools.com/css/) e [JavaScript](https://www.w3schools.com/js/default.asp) - principais linguagens utilizadas no desenvolvimento front-end
 * [Django](https://www.djangoproject.com/) - web framework full-stack em Python
 * [PostgreSQL](https://www.postgresql.org/) - sistema de gerenciamento de banco de dados com SQL
+
+## Configuração das branches
+
+Para o desenvolvimento será utilizado duas _branches_: **master** onde fica o projeto atualizado e em "produção", e **dev** utilizada principalmente pelos desenvolvedores, seja implementação e/ou testes.
 
 ## Configuração dos commits
 
