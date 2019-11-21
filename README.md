@@ -40,6 +40,15 @@ A pasta "**src**" terá todo o código desenvolvido no projeto, enquanto a pasta
 * [Django](https://www.djangoproject.com/) - web framework full-stack em Python
 * [PostgreSQL](https://www.postgresql.org/) - sistema de gerenciamento de banco de dados com SQL
 
+## Regras de Codificação
+
+1. Nome de variáveis e funções será em _snake case_;
+2. Nome de classe com iniciais maiúsculas e _underline_, quando composta;
+3. Comentar o comportamento da função em até 200 caracteres;
+4. Nomear variáveis, funções e classes de maneira intuitiva;
+5. Identação deverá ser com 4 espaços;
+6. Código deverá ser desenvolvido na IDE VS Code.
+
 ## Configuração das branches
 
 Para o desenvolvimento será utilizado duas _branches_: **master** onde fica o projeto atualizado e em "produção", e **dev** utilizada principalmente pelos desenvolvedores, seja implementação e/ou testes.
