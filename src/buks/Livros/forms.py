@@ -36,3 +36,20 @@ class Alterar_Livro(ModelForm):
             'capa': forms.FileInput()
         }
 
+# Formulário para consultar os dados de um livro já cadastrado no sistema.
+class Consultar_Livro(ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(Consultar_Livro, self).__init__(*args, **kwargs)
+        self.fields['preco_compra'].localize = True
+        self.fields['preco_compra'].widget.is_localized = True
+        self.fields['preco_venda'].localize = True
+        self.fields['preco_venda'].widget.is_localized = True
+
+    class Meta:
+        model = Livro
+        fields = '__all__'
+        widgets = {
+            'capa': forms.FileInput()
+        }
+

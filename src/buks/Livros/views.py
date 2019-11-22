@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import Cadastro_Livro, Alterar_Livro
+from .forms import Cadastro_Livro, Alterar_Livro, Consultar_Livro
 from django.contrib.auth.decorators import login_required
 import decimal
 from .models import Livro
@@ -77,3 +77,41 @@ def update_book_form(request, pk):
     data['form'] = form
 
     return render(request, 'Livros/update_book_form.html', data)
+
+# Função que exibe em uma tabela todos os livros cadastrados no sistema,
+# e possibilita a busca e seleção de um livro a ser consultado.
+@login_required
+def read_book(request):
+
+    data = {}
+
+    if request.method == "POST":
+        name_book = request.POST['search_book']
+        if name_book != "":
+            livros = Livro.objects.filter(titulo=name_book)
+            quant_livros = Livro.objects.filter(titulo=name_book).count()
+            if quant_livros == 0:
+                return render(request, 'Livros/update_book.html', data)
+            else:
+                data['Livros'] = livros
+                return render(request, 'Livros/update_book.html', data)
+
+    data['Livros'] = Livro.objects.all()
+
+    return render(request, 'Livros/read_book.html', data)
+
+# Função que exibe uma página com as informações de um livro
+# consultado pelo usuário do sistema.
+@login_required
+def read_book_form(request, pk):
+
+    data = {}
+
+    livros = Livro.objects.get(pk=pk)
+    form = Consultar_Livro(request.POST or None,
+                           request.FILES or None, instance=livros)
+
+    data['Livro'] = livros
+    data['form'] = form
+    return render(request, 'Livros/read_book_form.html', data)
+    
