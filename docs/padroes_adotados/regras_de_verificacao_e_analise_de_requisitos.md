@@ -2,7 +2,7 @@
 
 ### Regras dos requisitos
 1) Definir somente um requisito por vez;
-2) Evitar frases extensas;
+2) Evitar frases extensas que ultrapassem 150 palavras;
 3) Utilizar vocabulário fechado;
 4) Transformar requisitos do usuário em requisitos do software.
 

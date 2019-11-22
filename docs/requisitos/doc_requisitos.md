@@ -76,19 +76,19 @@
 | Identificação | [RNF-001] Funcionamento do sistema offline |
 |--|--|
 | Categoria | Disponibilidade |
-| Descrição | O sistema deverá funcionar 24h/dia, logo, é necessário que o mesmo funcione com ou sem conexão à rede. |
+| Descrição | O sistema deverá funcionar com ou sem conexão à rede. |
 
 | Identificação | [RNF-002] Tela de confirmação |
 |--|--|
 | Categoria | Padrão |
 | Descrição | O sistema deverá aprensentar uma tela de confirmação após o usuário realizar qualquer ação que envolva cadastros, alterações e exclusões. |
 
-| Identificação | [RNF-003] Compatibilidade com navegadores Chrome e Firefox |
+| Identificação | [RNF-003] Ambiente de execução |
 |--|--|
 | Categoria | Padrão |
-| Descrição | O sistema deverá ser compatível para ser utilizado nos navegadores Google Chrome e Mozilla Firefox. |
+| Descrição | O sistema será construído para rodar em ambiente web. |
 
-| Identificação | [RNF-004] Uso de design responsivo |
+| Identificação | [RNF-004] Compatibilidade com navegadores Chrome e Firefox |
 |--|--|
 | Categoria | Usabilidade |
-| Descrição | O sistema será construído para rodar em ambiente web e deverá possuir design responsivo para funcionar corretamente em browser, tablet ou celular. |
+| Descrição | O sistema deverá ser compatível para ser utilizado nos navegadores Google Chrome (a partir da versão 70) e Mozilla Firefox (a partir da versão 60). |
