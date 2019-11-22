@@ -114,4 +114,47 @@ def read_book_form(request, pk):
     data['Livro'] = livros
     data['form'] = form
     return render(request, 'Livros/read_book_form.html', data)
+
+# Função que exibe em uma tabela todos os livros cadastrados no sistema,
+# e possibilita a busca e seleção de um livro a ser excluído.
+@login_required
+def delete_book(request):
+
+    data = {}
+
+    try:
+        if request.session['validDeleteBook'] == "sim":
+            request.session['validDeleteBook'] = "nao"
+    except:
+        None
+    if request.method == "POST":
+        try:
+            request.session['validDeleteBook'] = 'sim'
+            pk = request.POST['isbn']
+            livro = Livro.objects.get(pk=pk)
+            livro.delete()
+
+            data['Livros'] = Livro.objects.all()
+
+            return render(request, 'Livros/delete_book.html', data)
+        except:
+            None
+        try:
+            name_book = request.POST['search_book']
+            if name_book != "":
+                livros = Livro.objects.filter(titulo=name_book)
+                quant_livros = Livro.objects.filter(titulo=name_book).count()
+                if quant_livros == 0:
+                    return render(request, 'Livros/update_book.html', data)
+                else:
+                    data['Livros'] = livros
+                    return render(request, 'Livros/update_book.html', data)
+        except:
+            None
+
+    request.session['validDeleteBook'] = "nao"
+
+    data['Livros'] = Livro.objects.all()
+
+    return render(request, 'Livros/delete_book.html', data)
     
