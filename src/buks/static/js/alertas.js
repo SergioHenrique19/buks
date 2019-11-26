@@ -13,6 +13,11 @@ function sendDeleteBook() {
   document.formDeleteBook.submit();
 }
 
+//Função para Enviar o formulário do registro do Cliente
+function sendRegisterCliente() {
+  document.formDeleteBook.submit();
+}
+
 //Tela de Sucesso do cadastro
 function showSuccessRegister() {
   Swal.fire({
