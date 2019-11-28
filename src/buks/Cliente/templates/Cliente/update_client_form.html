@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +12,12 @@
 
     <link rel="stylesheet" href="{% static 'css/principal.css' %}">
     <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
-    <title>Cadastrar Cliente</title>
+    <title>Alterar Livro</title>
 </head>
+
 <body>
-     <!--Container Principal-->
+
+    <!--Container Principal-->
 
     <div class="container">
 
@@ -25,7 +28,7 @@
             <!--Barra de Navegação-->
 
             <div class="nav">
-
+                
                 <!--Navegação Esquerda-->
 
                 <div class="nav-left">
@@ -68,7 +71,7 @@
                 <ul>
                     <li><a class="tablinks" href="/" title="Estante" id="defaultopenPage">Estantes</a></li>
                     <li><a class="tablinks" href="/register/book" title="Livros">Livros</a></li>
-                    <li><a class="tablinks  active" href="/register/client" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks active" href="/register/client" title="Clientes">Clientes</a></li>
                     <li><a class="tablinks" title="Empréstimo">Empréstimo</a></li>
                     <li><a class="tablinks" title="Compras">Compras</a></li>
                     <li><a class="tablinks" title="Recebimento">Recebimento</a></li>
@@ -86,32 +89,32 @@
 
         <div class="content">
 
-            <!--Opação dos Clientes-->
+            <!--Opação dos livros-->
 
             <div class="tabcontent" id="livro-content">
-
-                <!--Clientes-->
-
                 <div class="livro">
-                    <h1>Clientes - opções</h1>
+                    <h1>Livros - opções</h1>
                     <div class="livro-option">
                         <div class="livro-option-button">
-                            <a href="/register/client"><button type="button" class="btn-book activeButton"
-                                    id="defaultBook">Cadastrar
-                                    Cliente</button></a>
-                            <a href="/update/client"><button type="button" class="btn-book">Alterar Cliente</button></a>
-                            <a href="/read/client"><button type="button" class="btn-book">Consultar Cliente</button></a>
+                            <a href="/register/client"><button type="button" class="btn-book" id="defaultBook">Cadastrar
+                                    cliente</button></a>
+                            <a href="/update/client"><button type="button" class="btn-book activeButton">Alterar
+                                    cliente</button></a>
+                            <a href="/read/client"><button type="button" class="btn-book">Consultar cliente</button></a>
                         </div>
                     </div>
+
+                    <!--Livros-->
+
                     <div class="livro-pages">
                         <div class="livroContent" id="cadastroLivro">
                             <div class="cadastro-content">
                                 <div class="cadastro-form">
-                                    <form method="POST" enctype="multipart/form-data" name="formRegisterClient">
+                                    <form method="POST" enctype="multipart/form-data" name="formUpdateClient">
                                         {% csrf_token %}
                                         <div class="row-cadastro-form">
                                             <input type="text" id="valid"
-                                                value="{{ request.session.validRegisterClient }}">
+                                                value="{{ request.session.validUpdateClient }}">
                                             <label for="{{ form.nome.id_for_label }}">Nome</label>
                                             <input type="text" id="{{ form.nome.id_for_label }}"
                                                 name="{{ form.nome.name }}"
@@ -128,18 +131,20 @@
 
                                         <div class="row-cadastro-form">
                                             <label for="{{ form.data_nasc.id_for_label }}">Data de Nascimento</label>
-                                            <input type="date" id="{{ form.data_nasc.id_for_label }}"
+                                            <a style="width: 18%;">{{ form.data_nasc }}</a>
+                                            <!-- <input type="date" id="{{ form.data_nasc.id_for_label }}"
                                                 name="{{ form.data_nasc.name }}"
-                                                value="{{ form.data_nasc.value|default_if_none:'' }}"
-                                                style="width: 18%;">
-                                            {{ form.data_nasc.errors }}
+                                                value="{{ form.data_nasc.value }}"
+                                                style="width: 18%;"> -->
+                                            <!-- {{ form.data_nasc.errors }} -->
+                                            <!-- {{ Data }} -->
 
                                             <label for="{{ form.cpf.id_for_label }}">CPF</label>
                                             <input type="text" id="{{ form.cpf.id_for_label }}"
                                                 name="{{ form.cpf.name }}"
                                                 value="{{ form.cpf.value|default_if_none:'' }}"
                                                 placeholder="000.000.000-00" style="width: 22%;">
-                                            {{ form.data_nasc.errors }}
+                                            {{ form.cpf.errors }}
 
                                             <label for="{{ form.celular.id_for_label }}">Celular</label>
                                             <input type="text" id="{{ form.celular.id_for_label }}"
@@ -151,17 +156,17 @@
 
                                         <div class="row-cadastro-btn">
                                             <button type="reset">Limpar</button>
-                                            <button type="button" id="client-register-confirm">Cadastrar</button>
+                                            <button type="button" id="client-update-confirm">Alterar</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!--Fim dos Livros-->
+
                 </div>
-
-                <!--Fim dos Livros-->
-
             </div>
 
             <!--Fim das Opação dos livros-->
@@ -173,12 +178,10 @@
     </div>
 
     <script>
-
         //Referencia do Botao
-        let $btnClientCadConfirm = document.getElementById('client-register-confirm');
-
+        let $btnBookCadConfirm = document.getElementById('client-update-confirm');
         //Tela de Confirmação
-        $btnClientCadConfirm.addEventListener('click', async function () {
+        $btnBookCadConfirm.addEventListener('click', async function () {
             Swal.fire({
                 'title': 'Confirmação!',
                 'icon': 'warning',
@@ -189,29 +192,17 @@
                 'showCloseButton': true,
             }).then((result) => {
                 if (result.value) {
-                    sendRegisterClient();
+                    sendUpdateClient();
                 }
             })
-
-
         })
     </script>
-
-    <script>
-
-        //Função para tratamento da tela de cofirmação
-        window.onload = function () {
-            let $valid = document.getElementById('valid').value;
-            console.log($valid);
-            if ($valid == "sim") {
-                showSuccessRegisterClient();
-            }
-        }
-    </script>
-
+    
     <!--Scripts do Projeto-->
 
     <script src="{% static 'js/alertas.js' %}"></script>
     <script src="{% static 'js/sweetalert2.min.js' %}"></script>
+
 </body>
+
 </html>

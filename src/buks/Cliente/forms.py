@@ -11,6 +11,17 @@ class Cadastro_Cliente(ModelForm):
         model = Cliente
         fields = '__all__'
         widgets = {
-            'data_nasc': DateInput()
+            'data_nasc': DateInput(format='%Y-%m-%d')
         }
+
+class Alterar_Cliente(ModelForm):
+
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+        widgets = {
+            'data_nasc': DateInput(format='%Y-%m-%d')
+        }
+
+
     
