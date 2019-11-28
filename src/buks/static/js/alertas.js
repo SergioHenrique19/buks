@@ -14,12 +14,17 @@ function sendDeleteBook() {
 }
 
 //Função para Enviar o formulário do registro do Cliente
-function sendRegisterCliente() {
-  document.formDeleteBook.submit();
+function sendRegisterClient() {
+  document.formRegisterClient.submit();
 }
 
-//Tela de Sucesso do cadastro
-function showSuccessRegister() {
+//Função para Enviar o formulário do registro do Cliente
+function sendUpdateClient() {
+  document.formUpdateClient.submit();
+}
+
+//Tela de Sucesso do cadastro de Livro
+function showSuccessRegisterBook() {
   Swal.fire({
     'title': 'Livro Cadastrado com Sucesso!',
     'icon': 'success',
@@ -28,8 +33,8 @@ function showSuccessRegister() {
   })
 }
 
-//Tela de Sucesso da deleção
-function showSuccessDelete() {
+//Tela de Sucesso da deleção de Livro
+function showSuccessDeleteBook() {
   Swal.fire({
     'title': 'Livro Excluído com Sucesso!',
     'icon': 'success',
@@ -38,8 +43,8 @@ function showSuccessDelete() {
   })
 }
 
-//Tela de Sucesso da alteração
-function showSuccessUpdate() {
+//Tela de Sucesso da alteração de Livro
+function showSuccessUpdateBook() {
   Swal.fire({
     'title': 'Livro Atualizado com Sucesso!',
     'icon': 'success',
@@ -47,3 +52,24 @@ function showSuccessUpdate() {
     'timer': 3000
   })
 }
+
+//Tela de Sucesso do cadastro de Cliente
+function showSuccessRegisterClient() {
+  Swal.fire({
+    'title': 'Cliente Cadastrado com Sucesso!',
+    'icon': 'success',
+    'showCloseButton': false,
+    'timer': 3000
+  })
+}
+
+//Tela de Sucesso do cadastro de Cliente
+function showSuccessUpdateClient() {
+  Swal.fire({
+    'title': 'Cliente Alterado com Sucesso!',
+    'icon': 'success',
+    'showCloseButton': false,
+    'timer': 3000
+  })
+}
+ 
