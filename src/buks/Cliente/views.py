@@ -69,3 +69,26 @@ def update_client_form(request, pk):
     data['form'] = form
 
     return render(request, 'Cliente/update_client_form.html', data)
+
+def read_client(request):
+    
+    data = {}
+
+    if request.method == "POST":
+        email_client = request.POST['search_client']
+        if email_client != "":
+            clientes = Cliente.objects.filter(email=email_client)
+            quant_clientes = Cliente.objects.filter(email=email_client).count()
+            if quant_clientes == 0:
+                return render(request, 'Cliente/read_client.html', data)
+            else:
+                data['Clientes'] = clientes
+                return render(request, 'Cliente/read_client.html', data)
+
+    data['Clientes'] = Cliente.objects.all()
+
+    return render(request, 'Cliente/read_client.html', data)
+
+def read_client_form(request, pk):
+
+    return render(request, 'Cliente/read_client_form.html')

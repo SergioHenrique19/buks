@@ -143,7 +143,7 @@
                                             <input type="text" id="{{ form.cpf.id_for_label }}"
                                                 name="{{ form.cpf.name }}"
                                                 value="{{ form.cpf.value|default_if_none:'' }}"
-                                                placeholder="000.000.000-00" style="width: 22%;">
+                                                placeholder="000.000.000-00" style="width: 22%;" readonly>
                                             {{ form.cpf.errors }}
 
                                             <label for="{{ form.celular.id_for_label }}">Celular</label>

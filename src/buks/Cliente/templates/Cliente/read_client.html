@@ -98,10 +98,10 @@
                     <h1>Clientes - opções</h1>
                     <div class="livro-option">
                         <div class="livro-option-button">
-                            <a href="/register/book"><button type="button" class="btn-book" id="defaultBook">Cadastrar
+                            <a href="/register/client"><button type="button" class="btn-book" id="defaultBook">Cadastrar
                                     cliente</button></a>
-                            <a href="/update/book"><button type="button" class="btn-book">Alterar cliente</button></a>
-                            <a href="/read/book"><button type="button" class="btn-book activeButton">Consultar
+                            <a href="/update/client"><button type="button" class="btn-book">Alterar cliente</button></a>
+                            <a href="/read/client"><button type="button" class="btn-book activeButton">Consultar
                                     cliente</button></a>
                         </div>
                     </div>
@@ -109,11 +109,11 @@
                         <div class="livroContent" id="consultaLivro">
                             <div class="consulta-content">
                                 <div class="consulta-content-content">
-                                    <label for="">Digite o título do cliente que deseja consultar</label>
+                                    <label for="">Digite o email do cliente que deseja consultar</label>
                                     <div class="row-consulta">
                                         <form method="POST">
                                             {% csrf_token %}
-                                            <input name="search_book" type="text">
+                                            <input name="search_client" type="text">
                                             <button type="submit">&#128269</button>
                                         </form>
                                     </div>
@@ -127,11 +127,11 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {%  for Livro in Clientes %}
+                                                {%  for Cliente in Clientes %}
                                                 <tr>
-                                                    <td>{{ "ISBN: "}} {{ Livro.isbn }}</td>
-                                                    <td>{{ "Título: "}} {{ Livro.titulo }}</td>
-                                                    <td><a href="{% url 'Clientes:read_book_form' Livro.isbn %}"
+                                                    <td>{{ "Nome: "}} {{ Cliente.nome }}</td>
+                                                    <td>{{ "Email: "}} {{ Cliente.email }}</td>
+                                                    <td><a href="{% url 'Cliente:read_client_form' Cliente.cpf %}"
                                                             style="color: black;">&#8505</a>
                                                     </td>
                                                 </tr>
