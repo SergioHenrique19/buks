@@ -1,12 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Consultar Cliente</title>
 </head>
 <body>
-    
+    {% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Folhas Principais-->
+
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+    <title>Cadastrar Cliente</title>
+</head>
+<body>
+     <!--Container Principal-->
+
+    <div class="container">
+
+        <!--Header Principal-->
+
+        <div class="header">
+
+            <!--Barra de Navegação-->
+
+            <div class="nav">
+
+                <!--Navegação Esquerda-->
+
+                <div class="nav-left">
+                    <div class="nav-text-primary">
+                        <style type="text/css">
+                            a:link {
+                                text-decoration: none;
+                            }
+                        </style>
+                        <a href="/" class="text-decoration">
+                            <h2>Buks</h2>
+                            <p>A biblioteca que move o mundo...</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!--Navegação Direita-->
+
+                <div class="nav-right">
+                    <div class="my-account">
+                        <img src="{% static '/images/my-account.svg' %}" alt="">
+                        <p>Minha Conta</p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Fim da Barra de Navegação-->
+
+        </div>
+
+        <!--Fim do Container Principal-->
+
+        <!--Aba de Opções-->
+
+        <div class="list">
+
+            <!--Conteudo das listas-->
+
+            <div class="list-content">
+                <ul>
+                    <li><a class="tablinks" href="/" title="Estante" id="defaultopenPage">Estantes</a></li>
+                    <li><a class="tablinks" href="/register/book" title="Livros">Livros</a></li>
+                    <li><a class="tablinks  active" href="/register/client" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks" title="Empréstimo">Empréstimo</a></li>
+                    <li><a class="tablinks" title="Compras">Compras</a></li>
+                    <li><a class="tablinks" title="Recebimento">Recebimento</a></li>
+                    <li><a class="tablinks" title="Funcionarios">Funcionarios</a></li>
+                </ul>
+            </div>
+
+            <!--Fim do Conteudo das listas-->
+
+        </div>
+
+        <!--Fim das Aba de Opções-->
+
+        <!--Inicio do container Principal-->
+
+        <div class="content">
+
+            <!--Opação dos Clientes-->
+
+            <div class="tabcontent" id="livro-content">
+
+                <!--Clientes-->
+
+                <div class="livro">
+                    <h1>Clientes - opções</h1>
+                    <div class="livro-option">
+                        <div class="livro-option-button">
+                            <a href="/register/client"><button type="button" class="btn-book"
+                                    id="defaultBook">Cadastrar
+                                    Cliente</button></a>
+                            <a href="/update/client"><button type="button" class="btn-book">Alterar Cliente</button></a>
+                            <a href="/read/client"><button type="button" class="btn-book activeButton">Consultar Cliente</button></a>
+                        </div>
+                    </div>
+                    <div class="livro-pages">
+                        <div class="livroContent" id="cadastroLivro">
+                            <div class="cadastro-content">
+                                <div class="cadastro-form">
+                                    <form method="POST" enctype="multipart/form-data" name="formRegisterClient">
+                                        {% csrf_token %}
+                                        <div class="row-cadastro-form">
+                                            <input type="text" id="valid"
+                                                value="{{ request.session.validRegisterClient }}">
+                                            <label for="{{ form.nome.id_for_label }}">Nome</label>
+                                            <input type="text" id="{{ form.nome.id_for_label }}"
+                                                name="{{ form.nome.name }}"
+                                                value="{{ form.nome.value|default_if_none:'' }}"
+                                                placeholder="Fulano de Tal" style="width: 40%;" id="teste1">
+                                            {{ form.nome.errors }}
+
+                                            <label for="{{ form.email.id_for_label }}">Email</label>
+                                            <input type="email" id="{{ form.email.id_for_label }}"
+                                                name="{{ form.email.name }}"
+                                                placeholder="fulano@email.com" value="{{ form.email.value|default_if_none:'' }}" style="width: 40%;">
+                                            {{ form.email.errors }}
+                                        </div>
+
+                                        <div class="row-cadastro-form">
+                                            <label for="{{ form.data_nasc.id_for_label }}">Data de Nascimento</label>
+                                            <input type="date" id="{{ form.data_nasc.id_for_label }}"
+                                                name="{{ form.data_nasc.name }}"
+                                                value="{{ form.data_nasc.value|default_if_none:'' }}"
+                                                style="width: 18%;">
+                                            {{ form.data_nasc.errors }}
+
+                                            <label for="{{ form.cpf.id_for_label }}">CPF</label>
+                                            <input type="text" id="{{ form.cpf.id_for_label }}"
+                                                name="{{ form.cpf.name }}"
+                                                value="{{ form.cpf.value|default_if_none:'' }}"
+                                                placeholder="000.000.000-00" style="width: 22%;">
+                                            {{ form.data_nasc.errors }}
+
+                                            <label for="{{ form.celular.id_for_label }}">Celular</label>
+                                            <input type="text" id="{{ form.celular.id_for_label }}"
+                                                name="{{ form.celular.name }}"
+                                                value="{{ form.celular.value|default_if_none:'' }}"
+                                                placeholder="(99) 9999-9999" style="width: 18%;">
+                                            {{ form.celular.errors }}
+                                        </div>
+
+                                        <div class="row-cadastro-btn">
+                                            <button type="button">Voltar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Fim dos Livros-->
+
+            </div>
+
+            <!--Fim das Opação dos livros-->
+
+        </div>
+
+        <!--Fim do container Principal-->
+
+    </div>
+
+</body>
+</html>
 </body>
 </html>
