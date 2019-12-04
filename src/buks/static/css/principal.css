@@ -422,10 +422,9 @@ li a:hover {
 
 .cadastro-form form {
     width: 90%;
-    height: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
-    justify-items: center;
     flex-direction: column;
     color: var(--black);
     font-family: var(--font-text-large);
@@ -436,7 +435,7 @@ li a:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 18px;
 }
 
 .cadastro-form .row-cadastro-btn {
@@ -459,6 +458,12 @@ li a:hover {
     letter-spacing: 2px;
     font-family: var(--font-text-large);
     font-size: 14px;
+}
+
+.row-cadastro-form input[type="date"] {
+    color: var(--chocolate);
+    background: var(--white) url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+    color: grey;
 }
 
 
@@ -539,8 +544,7 @@ li a:hover {
     border: 1px var(--chocolate-dark) solid;
 }
 
-.row-cadastro-btn button[type="button"],
-button[type="reset"] {
+.row-cadastro-btn button[type="reset"] {
     width: 120px;
     height: 35px;
     justify-self: center;
@@ -553,7 +557,7 @@ button[type="reset"] {
     font-size: 17px;
 }
 
-.cadastro-form form button[type="submit"] {
+.cadastro-form form button[type="button"] {
     width: 120px;
     height: 35px;
     justify-self: center;
@@ -1110,6 +1114,8 @@ button[type="reset"] {
 
 .row-form-compra input[type="date"] {
     color: var(--chocolate);
+    background: var(--white) url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+    color: grey;
 }
 
 .row-form-compra select {
