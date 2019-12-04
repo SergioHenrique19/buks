@@ -11,7 +11,7 @@
     <!--Folhas Principais-->
 
     <link rel="stylesheet" href="{% static 'css/principal.css' %}">
-    <title>Consultar Livro</title>
+    <title>Consultar Cliente</title>
 </head>
 
 <body>
@@ -69,8 +69,8 @@
             <div class="list-content">
                 <ul>
                     <li><a class="tablinks" href="/" title="Estante" id="defaultopenPage">Estantes</a></li>
-                    <li><a class="tablinks active" href="/register/book" title="Livros">Livros</a></li>
-                    <li><a class="tablinks" href="/register/client" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks" href="/register/book" title="Livros">Livros</a></li>
+                    <li><a class="tablinks active" href="/register/client" title="Clientes">Clientes</a></li>
                     <li><a class="tablinks" title="Empréstimo">Empréstimo</a></li>
                     <li><a class="tablinks" title="Compras">Compras</a></li>
                     <li><a class="tablinks" title="Recebimento">Recebimento</a></li>
@@ -88,33 +88,32 @@
 
         <div class="content">
 
-            <!--Opação dos livros-->
+            <!--Opação dos Clientes-->
 
             <div class="tabcontent" id="livro-content">
 
-                <!--Livros-->
+                <!--Clientes-->
 
                 <div class="livro">
-                    <h1>Livros - opções</h1>
+                    <h1>Clientes - opções</h1>
                     <div class="livro-option">
                         <div class="livro-option-button">
-                            <a href="/register/book"><button type="button" class="btn-book" id="defaultBook">Cadastrar
-                                    livro</button></a>
-                            <a href="/update/book"><button type="button" class="btn-book">Alterar livro</button></a>
-                            <a href="/read/book"><button type="button" class="btn-book activeButton">Consultar
-                                    livro</button></a>
-                            <a href="/delete/book"><button type="button" class="btn-book">Excluir livro</button></a>
+                            <a href="/register/client"><button type="button" class="btn-book" id="defaultBook">Cadastrar
+                                    cliente</button></a>
+                            <a href="/update/client"><button type="button" class="btn-book">Alterar cliente</button></a>
+                            <a href="/read/client"><button type="button" class="btn-book activeButton">Consultar
+                                    cliente</button></a>
                         </div>
                     </div>
                     <div class="livro-pages">
                         <div class="livroContent" id="consultaLivro">
                             <div class="consulta-content">
                                 <div class="consulta-content-content">
-                                    <label for="">Digite o título do livro que deseja consultar</label>
+                                    <label for="">Digite o email do cliente que deseja consultar</label>
                                     <div class="row-consulta">
                                         <form method="POST">
                                             {% csrf_token %}
-                                            <input name="search_book" type="text">
+                                            <input name="search_client" type="text">
                                             <button type="submit">&#128269</button>
                                         </form>
                                     </div>
@@ -122,17 +121,17 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>ISBN</th>
-                                                    <th>Titulo</th>
+                                                    <th>Nome</th>
+                                                    <th>Email</th>
                                                     <th>Informações</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {%  for Livro in Livros %}
+                                                {%  for Cliente in Clientes %}
                                                 <tr>
-                                                    <td>{{ "ISBN: "}} {{ Livro.isbn }}</td>
-                                                    <td>{{ "Título: "}} {{ Livro.titulo }}</td>
-                                                    <td><a href="{% url 'Livros:read_book_form' Livro.isbn %}"
+                                                    <td>{{ "Nome: "}} {{ Cliente.nome }}</td>
+                                                    <td>{{ "Email: "}} {{ Cliente.email }}</td>
+                                                    <td><a href="{% url 'Cliente:read_client_form' Cliente.cpf %}"
                                                             style="color: black;">&#8505</a>
                                                     </td>
                                                 </tr>
@@ -145,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <!--Fim dos Livros-->
+                <!--Fim dos Clientes-->
             </div>
             <!--Fim das Opação dos livros-->
         </div>

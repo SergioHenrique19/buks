@@ -71,8 +71,8 @@
             <div class="list-content">
                 <ul>
                     <li><a class="tablinks" href="/" title="Estante" id="defaultopenPage">Estantes</a></li>
-                    <li><a class="tablinks active" href="#" title="Livros">Livros</a></li>
-                    <li><a class="tablinks" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks active" href="/register/book" title="Livros">Livros</a></li>
+                    <li><a class="tablinks" href="/register/client" title="Clientes">Clientes</a></li>
                     <li><a class="tablinks" title="Empréstimo">Empréstimo</a></li>
                     <li><a class="tablinks" title="Compras">Compras</a></li>
                     <li><a class="tablinks" title="Recebimento">Recebimento</a></li>
@@ -147,28 +147,20 @@
                             </div>
                         </div>
                     </div>
-
                     <!--Fim dos Livros-->
-
                 </div>
             </div>
-
             <!--Fim das Opação dos livros-->
-
         </div>
-
         <!--Fim do container Principal-->
-
     </div>
-
     <script>
-
         //Função Para controle de validação
         window.onload = function () {
             let $valid = document.getElementById('valid').value;
             console.log($valid);
             if ($valid == "sim") {
-                showSuccessUpdate();
+                showSuccessUpdateBook();
             }
         }
     </script>
@@ -180,5 +172,4 @@
 
 </body>
 
-</html>'
-'
+</html>
