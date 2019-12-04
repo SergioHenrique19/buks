@@ -23,5 +23,15 @@ class Alterar_Cliente(ModelForm):
             'data_nasc': DateInput(format='%Y-%m-%d')
         }
 
+class Consultar_Cliente(ModelForm):
+
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+        widgets = {
+            'data_nasc': DateInput(format='%Y-%m-%d')
+        }
+
+
 
     

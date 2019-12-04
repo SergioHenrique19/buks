@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import Cadastro_Cliente, Alterar_Cliente
+from .forms import Cadastro_Cliente, Alterar_Cliente, Consultar_Cliente
 from .models import Cliente
 from datetime import datetime
 
@@ -91,4 +91,13 @@ def read_client(request):
 
 def read_client_form(request, pk):
 
-    return render(request, 'Cliente/read_client_form.html')
+    data = {}
+
+    cliente = Cliente.objects.get(pk=pk)
+    form = Consultar_Cliente(request.POST or None,
+                           request.FILES or None, instance=cliente)
+
+    data['Cliente'] = cliente
+    data['form'] = form
+
+    return render(request, 'Cliente/read_client_form.html', data)
