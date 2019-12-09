@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import Alterar_Emprestimo
+from .forms import Alterar_Emprestimo, Consultar_Emprestimo
 from Cliente.models import Cliente
 from Livros.models import Livro
 from .models import Emprestimo
@@ -9,6 +9,7 @@ from datetime import datetime as dt
 
 # Create your views here.
 
+
 @login_required
 def register_lending(request):
 
@@ -16,19 +17,21 @@ def register_lending(request):
 
     data['Clientes'] = Cliente.objects.all()
     data['Livros'] = Livro.objects.all()
-    request.session['validRegisterLending'] = "nao"    
+    request.session['validRegisterLending'] = "nao"
 
     if request.method == "POST":
         id_emprestimo = request.POST['id_emprestimo']
         data_devolucao = request.POST['data_devolucao']
         try:
-            cliente = Cliente.objects.get(cpf=request.POST.get('cliente', False))
+            cliente = Cliente.objects.get(
+                cpf=request.POST.get('cliente', False))
             livro = Livro.objects.get(isbn=request.POST.get('livro', False))
         except:
             cliente = None
             livro = None
         try:
-            preco_unitario = decimal.Decimal(request.POST['preco_unitario'].replace(",", "."))
+            preco_unitario = decimal.Decimal(
+                request.POST['preco_unitario'].replace(",", "."))
         except:
             preco_unitario = None
         quantidade = request.POST['quantidade']
@@ -41,24 +44,26 @@ def register_lending(request):
         else:
             forma_pagamento = int(1)
         try:
-            desconto = decimal.Decimal(request.POST['desconto'].replace(",", "."))
+            desconto = decimal.Decimal(
+                request.POST['desconto'].replace(",", "."))
         except:
             desconto = None
         try:
-            valor_total = decimal.Decimal(request.POST['valor_total'].replace(",", "."))
-        except: 
+            valor_total = decimal.Decimal(
+                request.POST['valor_total'].replace(",", "."))
+        except:
             valor_total = None
         try:
             if int(livro.quantidade) >= int(quantidade) and int(quantidade) != 0:
                 emprestimo = Emprestimo.objects.create(id_emprestimo=id_emprestimo, data_devolucao=data_devolucao, cliente=cliente,
-                                            livro=livro, preco_unitario=preco_unitario, quantidade=quantidade,
-                                            valor=valor, forma_pagamento=forma_pagamento, desconto=desconto,
-                                            valor_total=valor_total)
+                                                       livro=livro, preco_unitario=preco_unitario, quantidade=quantidade,
+                                                       valor=valor, forma_pagamento=forma_pagamento, desconto=desconto,
+                                                       valor_total=valor_total)
                 emprestimo.save()
                 livro.quantidade -= quantidade
                 livro.save()
                 request.session['validRegisterLending'] = "sim"
-            
+
             return render(request, 'Emprestimo/register_lending.html', data)
         except:
             data['id_emprestimo'] = id_emprestimo
@@ -71,7 +76,7 @@ def register_lending(request):
             data['forma_pagamento'] = forma_pagamento
             data['desconto'] = desconto
             data['valor_total'] = valor_total
- 
+
             return render(request, 'Emprestimo/register_lending.html', data)
     else:
         data['id_emprestimo'] = None
@@ -87,6 +92,7 @@ def register_lending(request):
 
         return render(request, 'Emprestimo/register_lending.html', data)
 
+
 @login_required
 def update_lending(request):
 
@@ -101,8 +107,9 @@ def update_lending(request):
     if request.method == "POST":
         id_emprestimo = request.POST['search_lending']
         if id_emprestimo != "":
-            emprestimo = Emprestimo.objects.get(id_emprestimo=id_emprestimo)
-            quant_emprestimos = Emprestimo.objects.filter(id_emprestimo=id_emprestimo).count()
+            emprestimo = Emprestimo.objects.filter(id_emprestimo=id_emprestimo)
+            quant_emprestimos = Emprestimo.objects.filter(
+                id_emprestimo=id_emprestimo).count()
             if quant_emprestimos == 0:
                 return render(request, 'Emprestimo/update_lending.html', data)
             else:
@@ -118,6 +125,7 @@ def update_lending(request):
 
     return render(request, 'Emprestimo/update_lending.html', data)
 
+
 @login_required
 def update_lending_form(request, pk):
 
@@ -130,13 +138,15 @@ def update_lending_form(request, pk):
         id_emprestimo = request.POST['id_emprestimo']
         data_devolucao = request.POST['data_devolucao']
         try:
-            cliente = Cliente.objects.get(cpf=request.POST.get('cliente', False))
+            cliente = Cliente.objects.get(
+                cpf=request.POST.get('cliente', False))
             livro = Livro.objects.get(isbn=request.POST.get('livro', False))
         except:
             cliente = emprestimo.livro
             livro = emprestimo.cliente
         try:
-            preco_unitario = decimal.Decimal(request.POST['preco_unitario'].replace(",", "."))
+            preco_unitario = decimal.Decimal(
+                request.POST['preco_unitario'].replace(",", "."))
         except:
             preco_unitario = emprestimo.preco_unitario
         quantidade = int(request.POST['quantidade'])
@@ -149,12 +159,14 @@ def update_lending_form(request, pk):
         else:
             forma_pagamento = int(1)
         try:
-            desconto = decimal.Decimal(request.POST['desconto'].replace(",", "."))
+            desconto = decimal.Decimal(
+                request.POST['desconto'].replace(",", "."))
         except:
             desconto = emprestimo.valor
         try:
-            valor_total = decimal.Decimal(request.POST['valor_total'].replace(",", "."))
-        except: 
+            valor_total = decimal.Decimal(
+                request.POST['valor_total'].replace(",", "."))
+        except:
             valor_total = emprestimo.valor_total
 
         if int(emprestimo.quantidade) <= int(quantidade) and int(emprestimo.livro.quantidade) >= int(quantidade) - int(emprestimo.quantidade):
@@ -224,7 +236,7 @@ def update_lending_form(request, pk):
                 data['nome_pagamento'] = "Dinheiro"
             else:
                 data['nome_pagamento'] = "Cartão de Crédito"
-            data['desconto'] = desconto 
+            data['desconto'] = desconto
             data['valor_total'] = valor_total
             request.session['validUpdateLending'] = "nao"
 
@@ -241,10 +253,56 @@ def update_lending_form(request, pk):
             data['nome_pagamento'] = "Dinheiro"
         else:
             data['nome_pagamento'] = "Cartão de Crédito"
-        data['desconto'] = emprestimo.desconto 
+        data['desconto'] = emprestimo.desconto
         data['valor_total'] = emprestimo.valor_total
 
     request.session['validUpdateLending'] = "nao"
 
     return render(request, 'Emprestimo/update_lending_form.html', data)
 
+
+@login_required
+def read_lending(request):
+
+    data = {}
+
+    if request.method == "POST":
+        id_emprestimo = request.POST['search_lending']
+        if id_emprestimo != "":
+            emprestimo = Emprestimo.objects.filter(id_emprestimo=id_emprestimo)
+            quant_emprestimos = Emprestimo.objects.filter(
+                id_emprestimo=id_emprestimo).count()
+            if quant_emprestimos == 0:
+                return render(request, 'Emprestimo/read_lending.html', data)
+            else:
+                data['Emprestimos'] = emprestimo
+                return render(request, 'Emprestimo/read_lending.html', data)
+
+    data['Emprestimos'] = Emprestimo.objects.all()
+
+    return render(request, 'Emprestimo/read_lending.html', data)
+
+
+@login_required
+def read_lending_form(request, pk):
+
+    data = {}
+
+    emprestimo = Emprestimo.objects.get(pk=pk)
+    data['form'] = Consultar_Emprestimo(instance=emprestimo)
+
+    data['id_emprestimo'] = emprestimo.id_emprestimo
+    data['cliente'] = emprestimo.cliente
+    data['livro'] = emprestimo.livro
+    data['preco_unitario'] = emprestimo.preco_unitario
+    data['quantidade'] = emprestimo.quantidade
+    data['valor'] = emprestimo.valor
+    data['forma_pagamento'] = emprestimo.forma_pagamento
+    if data['forma_pagamento'] == 0:
+        data['nome_pagamento'] = "Dinheiro"
+    else:
+        data['nome_pagamento'] = "Cartão de Crédito"
+    data['desconto'] = emprestimo.desconto
+    data['valor_total'] = emprestimo.valor_total
+
+    return render(request, 'Emprestimo/read_lending_form.html', data)

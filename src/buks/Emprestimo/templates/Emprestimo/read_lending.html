@@ -97,9 +97,11 @@
                     <h1>Empreśtimos - opções</h1>
                     <div class="livro-option">
                         <div class="livro-option-button">
-                            <a href="/register/lending"><button type="button" class="btn-book" id="defaultBook">Cadastrar</button></a>
+                            <a href="/register/lending"><button type="button" class="btn-book"
+                                    id="defaultBook">Cadastrar</button></a>
                             <a href="/update/lending"><button type="button" class="btn-book">Alterar</button></a>
-                            <a href="/read/lending"><button type="button" class="btn-book activeButton">Consultar</button></a>
+                            <a href="/read/lending"><button type="button"
+                                    class="btn-book activeButton">Consultar</button></a>
                             <a href="/delete/lending"><button type="button" class="btn-book">Excluir</button></a>
                         </div>
                     </div>
@@ -110,12 +112,11 @@
                         <div class="livroContent" id="consultaLivro">
                             <div class="consulta-content">
                                 <div class="consulta-content-content">
-                                    <label for="">Digite ID do Empréstimo que deseja Buscar</label>
+                                    <label for="">Digite ID do Empréstimo que deseja consultar</label>
                                     <div class="row-consulta">
                                         <form method="POST">
                                             {% csrf_token %}
-                                            <input type="text" id="valid" value="{{ request.session.validUpdateBook }}">
-                                            <input name="search_book" type="text">
+                                            <input name="search_lending" type="text">
                                             <button type="submit">&#128269</button>
                                         </form>
                                     </div>
@@ -132,10 +133,10 @@
                                             <tbody>
                                                 {%  for Emprestimo in Emprestimos %}
                                                 <tr>
-                                                    <td>{{ "ID: "}} {{ Emprestimo.id }}</td>
+                                                    <td>{{ "ID: "}} {{ Emprestimo.id_emprestimo }}</td>
                                                     <td>{{ "Livro: "}} {{ Emprestimo.livro }}</td>
                                                     <td>{{ "Cliente: "}} {{ Emprestimo.cliente }}</td>
-                                                    <td><a href="{% url 'Emprestimos:update_book_form' Emprestimo.id %}"
+                                                    <td><a href="{% url 'Emprestimo:read_lending_form' Emprestimo.id_emprestimo %}"
                                                             style="color: black;">&#9998</a>
                                                     </td>
                                                 </tr>
@@ -154,16 +155,6 @@
         </div>
         <!--Fim do container Principal-->
     </div>
-    <script>
-        //Função Para controle de validação
-        window.onload = function () {
-            let $valid = document.getElementById('valid').value;
-            console.log($valid);
-            if ($valid == "sim") {
-                showSuccessUpdateBook();
-            }
-        }
-    </script>
 
     <!--Scripts do Projeto-->
 

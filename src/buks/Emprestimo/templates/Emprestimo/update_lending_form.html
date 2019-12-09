@@ -120,7 +120,7 @@
                                             <label>ID</label>
                                             <input type="text" id="id_emprestimo" name="id_emprestimo"
                                                 value="{{ id_emprestimo|default_if_none:'' }}" placeholder="Código ID"
-                                                style="width: 15%;" readonly>
+                                                style="width: 40%;" readonly>
                                             <!-- {{ form.isbn.errors }} -->
 
                                             <!-- <label for="{{ form.capa.id_for_label }}">Data e Hora</label>
@@ -131,15 +131,16 @@
 
                                             <label for="{{ form.data_devolucao.id_for_label }}">Data de
                                                 Devolução</label>
-                                            <a style="width: 20%;">{{ form.data_devolucao }}</a>
-
-                                            <!-- {{ form.capa.errors }} -->
+                                            <a style="width: 30%;">{{ form.data_devolucao }}</a>
+                                            <!--
+                                                {{ form.capa.errors }} -->
                                         </div>
 
-                                        <div class="row-cadastro-form">
+                                        <div class=" row-cadastro-form">
                                             <label>Cliente</label>
                                             <select name="cliente" id="cliente" style="width: 40%;">
-                                                <option value="{{ cliente.cpf|default_if_none:'' }}">{{ cliente.nome }}
+                                                <option value="{{ cliente.cpf|default_if_none:'' }}">
+                                                    {{ cliente.nome }}
                                                 </option>
                                             </select readonly>
 
