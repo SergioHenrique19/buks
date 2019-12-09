@@ -94,11 +94,13 @@
 
             <div class="tabcontent" id="livro-content">
                 <div class="livro">
-                    <h1>Empreśtimos - opções</h1>
+                    <h1>Empréstimos - opções</h1>
                     <div class="livro-option">
                         <div class="livro-option-button">
-                            <a href="/register/lending"><button type="button" class="btn-book" id="defaultBook">Cadastrar</button></a>
-                            <a href="/update/lending"><button type="button" class="btn-book activeButton">Alterar</button></a>
+                            <a href="/register/lending"><button type="button" class="btn-book"
+                                    id="defaultBook">Cadastrar</button></a>
+                            <a href="/update/lending"><button type="button"
+                                    class="btn-book activeButton">Alterar</button></a>
                             <a href="/read/lending"><button type="button" class="btn-book">Consultar</button></a>
                             <a href="/delete/lending"><button type="button" class="btn-book">Excluir</button></a>
                         </div>
@@ -114,8 +116,9 @@
                                     <div class="row-consulta">
                                         <form method="POST">
                                             {% csrf_token %}
-                                            <input type="text" id="valid" value="{{ request.session.validUpdateBook }}">
-                                            <input name="search_book" type="text">
+                                            <input type="text" id="valid"
+                                                value="{{ request.session.validUpdateLending }}">
+                                            <input name="search_lending" type="text">
                                             <button type="submit">&#128269</button>
                                         </form>
                                     </div>
@@ -132,10 +135,10 @@
                                             <tbody>
                                                 {%  for Emprestimo in Emprestimos %}
                                                 <tr>
-                                                    <td>{{ "ID: "}} {{ Emprestimo.id }}</td>
+                                                    <td>{{ "ID: "}} {{ Emprestimo.id_emprestimo }}</td>
                                                     <td>{{ "Livro: "}} {{ Emprestimo.livro }}</td>
-                                                    <td>{{ "Cliente: "}} {{ Emprestimo.cliente }}</td>
-                                                    <td><a href="{% url 'Emprestimos:update_book_form' Emprestimo.id %}"
+                                                    <td>{{ "Cliente: "}} {{ Emprestimo.cliente.nome }}</td>
+                                                    <td><a href="{% url 'Emprestimo:update_lending_form' Emprestimo.id_emprestimo %}"
                                                             style="color: black;">&#9998</a>
                                                     </td>
                                                 </tr>
@@ -160,7 +163,7 @@
             let $valid = document.getElementById('valid').value;
             console.log($valid);
             if ($valid == "sim") {
-                showSuccessUpdateBook();
+                showSuccessUpdateLending();
             }
         }
     </script>

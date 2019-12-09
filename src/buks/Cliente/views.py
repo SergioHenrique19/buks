@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from .forms import Cadastro_Cliente, Alterar_Cliente, Consultar_Cliente
 from .models import Cliente
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required
 def register_client(request):
     
     data = {}
@@ -20,6 +22,7 @@ def register_client(request):
         return render(request, 'Cliente/register_client.html', data)
 
 
+@login_required
 def update_client(request):
 
     data = {}
@@ -50,6 +53,8 @@ def update_client(request):
 
     return render(request, 'Cliente/update_client.html', data)
 
+
+@login_required
 def update_client_form(request, pk):
 
     data = {}
@@ -69,6 +74,8 @@ def update_client_form(request, pk):
 
     return render(request, 'Cliente/update_client_form.html', data)
 
+
+@login_required
 def read_client(request):
     
     data = {}
@@ -88,6 +95,8 @@ def read_client(request):
 
     return render(request, 'Cliente/read_client.html', data)
 
+
+@login_required
 def read_client_form(request, pk):
 
     data = {}

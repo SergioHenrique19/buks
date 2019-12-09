@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="{% static 'css/principal.css' %}">
     <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
-    <title>Cadastrar Empréstimo</title>
+    <title>Alterar Empréstimo</title>
 </head>
 
 <body>
@@ -102,7 +102,8 @@
                             <a href="/register/lending"><button type="button" class="btn-book"
                                     id="defaultBook">Cadastrar
                                 </button></a>
-                            <a href="/update/lending"><button type="button" class="btn-book activeButton">Alterar</button></a>
+                            <a href="/update/lending"><button type="button"
+                                    class="btn-book activeButton">Alterar</button></a>
                             <a href="/read/lending"><button type="button" class="btn-book">Consultar</button></a>
                             <a href="/delete/lending"><button type="button" class="btn-book">Excluir</button></a>
                         </div>
@@ -111,92 +112,81 @@
                         <div class="livroContent" id="cadastroLivro">
                             <div class="cadastro-content">
                                 <div class="cadastro-form">
-                                    <form method="POST" enctype="multipart/form-data" name="formResgisterBook">
+                                    <form method="POST" enctype="multipart/form-data" name="formUpdateLending">
                                         {% csrf_token %}
                                         <div class="row-cadastro-form">
                                             <input type="text" id="valid"
-                                                value="{{ request.session.validRegisterBook }}">
-                                            <label for="{{ form.id.id_for_label }}">ID</label>
-                                            <input type="text" id="{{ form.isbn.id_for_label }}"
-                                                name="{{ form.id.name }}"
-                                                value="{{ form.id.value|default_if_none:'' }}"
-                                                placeholder="Código ID" style="width: 15%;" readonly>
+                                                value="{{ request.session.validUpdateLending }}">
+                                            <label>ID</label>
+                                            <input type="text" id="id_emprestimo" name="id_emprestimo"
+                                                value="{{ id_emprestimo|default_if_none:'' }}" placeholder="Código ID"
+                                                style="width: 15%;" readonly>
                                             <!-- {{ form.isbn.errors }} -->
 
-                                            <label for="{{ form.capa.id_for_label }}">Data e Hora</label>
+                                            <!-- <label for="{{ form.capa.id_for_label }}">Data e Hora</label>
                                             <input type="datetime-local" id="{{ form.capa.id_for_label }}"
                                                 name="{{ form.capa.name }}"
-                                                value="{{ form.capa.value|default_if_none:'' }}" style="width: 20%;">
+                                                value="{{ form.capa.value|default_if_none:'' }}" style="width: 20%;"> -->
                                             <!-- {{ form.capa.errors }} -->
 
-                                            <label for="{{ form.capa.id_for_label }}">Data de Devolução</label>
-                                            <input type="datetime-local" id="{{ form.capa.id_for_label }}"
-                                                name="{{ form.capa.name }}"
-                                                value="{{ form.capa.value|default_if_none:'' }}" style="width: 20%;">
+                                            <label for="{{ form.data_devolucao.id_for_label }}">Data de
+                                                Devolução</label>
+                                            <a style="width: 20%;">{{ form.data_devolucao }}</a>
+
                                             <!-- {{ form.capa.errors }} -->
                                         </div>
 
                                         <div class="row-cadastro-form">
-                                            <label for="{{ form.cliente.id_for_label }}">Cliente</label>
-                                            <select name="" id="{{ form.cliente.id_for_label }}" style="width: 40%;">
-                                                <option value="">Selecione...</option>
-                                                <option value="">Fabio</option>
-                                                <option value="">Otávio</option>
-                                                <option value="">Sérgio</option>
-                                            </select>
+                                            <label>Cliente</label>
+                                            <select name="cliente" id="cliente" style="width: 40%;">
+                                                <option value="{{ cliente.cpf|default_if_none:'' }}">{{ cliente.nome }}
+                                                </option>
+                                            </select readonly>
 
-                                            <label for="{{ form.livro.id_for_label }}">Livro</label>
-                                            <select name="" id="{{ form.livro.id_for_label }}" style="width: 40%;">
-                                                <option value="">Selecione...</option>
-                                                <option value="">Fabio</option>
-                                                <option value="">Otávio</option>
-                                                <option value="">Sérgio</option>
-                                            </select>
+                                            <label for="">Livro</label>
+                                            <select name="livro" id="livro" style="width: 40%;">
+                                                <option value="{{ livro.isbn|default_if_none:'' }}">{{ livro.isbn }}
+                                                </option>
+                                            </select readonly>
                                         </div>
 
                                         <div class="row-cadastro-form">
                                             <label for="{{ form.editora.id_for_label }}">Preço Unitário</label>
-                                            <input type="text" id="{{ form.editora.id_for_label }}"
-                                                name="{{ form.editora.name }}"
-                                                value="{{ form.editora.value|default_if_none:'' }}"
-                                                placeholder="R$ 0,00" style="width: 20%;">
-                                            
-                                            <label for="{{ form.quantidade.id_for_label }}">Quantidade</label>
-                                            <input type="text" id="{{ form.quantidade.id_for_label }}"
-                                                name="{{ form.quantidade.name }}"
-                                                value="{{ form.quantidade.value|default_if_none:0 }}" placeholder="Qtd"
-                                                style="width: 15%">
+                                            <input type="text" id="preco_unitario" name="preco_unitario"
+                                                value="{{ preco_unitario|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" readonly>
 
-                                            <label for="{{ form.ano.id_for_label }}">Valor</label>
-                                            <input type="text" id="{{ form.ano.id_for_label }}"
-                                                name="{{ form.ano.name }}"
-                                                value="{{ form.ano.value|default_if_none:'' }}"
-                                                placeholder="R$ 0,00" style="width: 20%;">
+                                            <label>Quantidade</label>
+                                            <input type="text" id="quantidade" name="quantidade"
+                                                value="{{ quantidade|default_if_none:0 }}" placeholder="Qtd"
+                                                style="width: 15%" onblur="atualizaValor();">
+
+                                            <label>Valor</label>
+                                            <input type="text" id="valor" name="valor"
+                                                value="{{ valor|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" readonly>
                                         </div>
 
                                         <div class="row-cadastro-form">
-                                            <label for="{{ form.edicao.id_for_label }}">Forma de Pagamento</label>
-                                            <input type="text" id="{{ form.edicao.id_for_label }}"
-                                                name="{{ form.edicao.name }}"
-                                                value="{{ form.edicao.value|default_if_none:'' }}" placeholder="Cartão, Dinheiro"
-                                                style="width: 15;">
+                                            <label>Forma de Pagamento</label>
+                                            <select name="forma_pagamento" style="width: 15%;">
+                                                <option value="{{ forma_pagamento }}">{{ nome_pagamento }}</option>
+                                            </select>
 
-                                            <label for="{{ form.genero.id_for_label }}">Desconto</label>
-                                            <input type="text" id="{{ form.genero.id_for_label }}"
-                                                name="{{ form.genero.name }}"
-                                                value="{{ form.genero.value|default_if_none:'' }}"
-                                                placeholder="R$ 0,00" style="width: 20%;">
+                                            <label>Desconto</label>
+                                            <input type="text" id="desconto" name="desconto"
+                                                value="{{ desconto|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" onblur="atualizaValorFinal();">
 
-                                            <label for="{{ form.edicao.id_for_label }}">Valor Total</label>
-                                            <input type="text" id="{{ form.edicao.id_for_label }}"
-                                                name="{{ form.edicao.name }}"
-                                                value="{{ form.edicao.value|default_if_none:'' }}" placeholder="R$ 0,00"
-                                                style="width: 15;">
+                                            <label>Valor Total</label>
+                                            <input type="text" id="valor_total" name="valor_total"
+                                                value="{{ valor_total|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 15;" readonly>
                                         </div>
 
                                         <div class="row-cadastro-btn" style="margin-top: 40px;">
-                                            <button type="reset">Limpar</button>
-                                            <button type="button" id="book-register-confirm">Cadastrar</button>
+                                            <a href="/update/lending"><button type="button">Voltar</button></a>
+                                            <button type="button" id="lending-update-confirm">Alterar</button>
                                         </div>
                                     </form>
                                 </div>
@@ -218,10 +208,33 @@
     </div>
 
     <script>
+
+        function atualizaValor() {
+            var quantidade = document.getElementById('quantidade').value;
+            var preco_unitario = document.getElementById('preco_unitario').value;
+            var valor_campo = document.getElementById('valor');
+            if (quantidade != '' && preco_unitario != '') {
+                valor_campo.value = quantidade * parseFloat(preco_unitario) + ",00";
+            }
+            atualizaValorFinal()
+        }
+
+        function atualizaValorFinal() {
+            var valor = document.getElementById('valor').value;
+            var desconto = document.getElementById('desconto').value;
+            var valor_total_campo = document.getElementById('valor_total');
+            if (valor >= desconto && valor != '' && desconto != '') {
+                valor_total_campo.value = parseInt(valor) - parseInt(desconto) + ",00";
+            }
+        }
+
+    </script>
+
+    <script>
         //Referencia do Botao
-        let $btnBookCadConfirm = document.getElementById('book-register-confirm');
+        let $btnLendingUpdateConfirm = document.getElementById('lending-update-confirm');
         //Tela de Confirmação
-        $btnBookCadConfirm.addEventListener('click', async function () {
+        $btnLendingUpdateConfirm.addEventListener('click', async function () {
             Swal.fire({
                 'title': 'Confirmação!',
                 'icon': 'warning',
@@ -232,23 +245,11 @@
                 'showCloseButton': true,
             }).then((result) => {
                 if (result.value) {
-                    sendRegisterBook();
+                    sendUpdateLending();
                 }
             })
         })
     </script>
-
-    <script>
-        //Função para tratamento da tela de cofirmação
-        window.onload = function () {
-            let $valid = document.getElementById('valid').value;
-            console.log($valid);
-            if ($valid == "sim") {
-                showSuccessRegisterBook();
-            }
-        }
-    </script>
-
     <!--Scripts do Projeto-->
 
     <script src="{% static 'js/alertas.js' %}"></script>

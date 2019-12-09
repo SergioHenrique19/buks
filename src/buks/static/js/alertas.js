@@ -23,8 +23,14 @@ function sendUpdateClient() {
   document.formUpdateClient.submit();
 }
 
+//Função para Enviar o formulário do registro do Empréstimo
 function sendRegisterLending() {
   document.formRegisterLending.submit();
+}
+
+//Função para Enviar o formulário da alteração do Empréstimo
+function sendUpdateLending() {
+  document.formUpdateLending.submit();
 }
 
 //Tela de Sucesso do cadastro de Livro
@@ -81,6 +87,16 @@ function showSuccessUpdateClient() {
 function showSuccessRegisterLending() {
   Swal.fire({
     'title': 'Empréstimo Realizado com Sucesso!',
+    'icon': 'success',
+    'showCloseButton': false,
+    'timer': 3000
+  })
+}
+
+//Tela de Sucesso da alteração de Empréstimo
+function showSuccessUpdateLending() {
+  Swal.fire({
+    'title': 'Empréstimo Alterado com Sucesso!',
     'icon': 'success',
     'showCloseButton': false,
     'timer': 3000
