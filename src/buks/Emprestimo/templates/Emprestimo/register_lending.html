@@ -111,92 +111,88 @@
                         <div class="livroContent" id="cadastroLivro">
                             <div class="cadastro-content">
                                 <div class="cadastro-form">
-                                    <form method="POST" enctype="multipart/form-data" name="formResgisterBook">
+                                    <form method="POST" enctype="multipart/form-data" name="formRegisterLending">
                                         {% csrf_token %}
                                         <div class="row-cadastro-form">
                                             <input type="text" id="valid"
-                                                value="{{ request.session.validRegisterBook }}">
-                                            <label for="{{ form.id.id_for_label }}">ID</label>
-                                            <input type="text" id="{{ form.isbn.id_for_label }}"
-                                                name="{{ form.id.name }}"
-                                                value="{{ form.id.value|default_if_none:'' }}"
-                                                placeholder="Código ID" style="width: 15%;" id="teste1">
+                                                value="{{ request.session.validRegisterLending }}">
+                                            <label>ID</label>
+                                            <input type="text" name="id_emprestimo"
+                                                value="{{ id_emprestimo|default_if_none:'' }}" placeholder="Código ID"
+                                                style="width: 15%;" id="teste1">
                                             <!-- {{ form.isbn.errors }} -->
 
-                                            <label for="{{ form.capa.id_for_label }}">Data e Hora</label>
+                                            <!-- <label for="{{ form.capa.id_for_label }}">Data e Hora</label>
                                             <input type="datetime-local" id="{{ form.capa.id_for_label }}"
                                                 name="{{ form.capa.name }}"
-                                                value="{{ form.capa.value|default_if_none:'' }}" style="width: 20%;">
+                                                value="{{ form.capa.value|default_if_none:'' }}" style="width: 20%;"> -->
                                             <!-- {{ form.capa.errors }} -->
 
-                                            <label for="{{ form.capa.id_for_label }}">Data de Devolução</label>
-                                            <input type="datetime-local" id="{{ form.capa.id_for_label }}"
-                                                name="{{ form.capa.name }}"
-                                                value="{{ form.capa.value|default_if_none:'' }}" style="width: 20%;">
+                                            <label>Data de Devolução</label>
+                                            <input type="date" name="data_devolucao"
+                                                value="{{ data_devolucao|default_if_none:'' }}" style="width: 20%;">
                                             <!-- {{ form.capa.errors }} -->
                                         </div>
 
                                         <div class="row-cadastro-form">
-                                            <label for="{{ form.cliente.id_for_label }}">Cliente</label>
-                                            <select name="" id="{{ form.cliente.id_for_label }}" style="width: 40%;">
+                                            <label>Cliente</label>
+                                            <select name="cliente" style=" width: 40%;">
                                                 <option value="">Selecione...</option>
-                                                <option value="">Fabio</option>
-                                                <option value="">Otávio</option>
-                                                <option value="">Sérgio</option>
+                                                {% for Cliente in Clientes  %}
+                                                <option value="{{ Cliente.cpf }}">{{ Cliente.nome }}</option>
+                                                {% endfor %}
                                             </select>
 
-                                            <label for="{{ form.livro.id_for_label }}">Livro</label>
-                                            <select name="" id="{{ form.livro.id_for_label }}" style="width: 40%;">
+                                            <label>Livro</label>
+                                            <select id="select_book" name="livro" onchange="obterPrecoUnitario();"
+                                                style="width: 40%;">
                                                 <option value="">Selecione...</option>
-                                                <option value="">Fabio</option>
-                                                <option value="">Otávio</option>
-                                                <option value="">Sérgio</option>
+                                                {% for Livro in Livros %}
+                                                <option preco_unitario="{{ Livro.preco_venda }}"
+                                                    value="{{ Livro.isbn }}">{{ Livro.isbn }}</option>
+                                                {% endfor %}
                                             </select>
                                         </div>
 
                                         <div class="row-cadastro-form">
-                                            <label for="{{ form.editora.id_for_label }}">Preço Unitário</label>
-                                            <input type="text" id="{{ form.editora.id_for_label }}"
-                                                name="{{ form.editora.name }}"
-                                                value="{{ form.editora.value|default_if_none:'' }}"
-                                                placeholder="R$ 0,00" style="width: 20%;">
-                                            
-                                            <label for="{{ form.quantidade.id_for_label }}">Quantidade</label>
-                                            <input type="text" id="{{ form.quantidade.id_for_label }}"
-                                                name="{{ form.quantidade.name }}"
-                                                value="{{ form.quantidade.value|default_if_none:0 }}" placeholder="Qtd"
-                                                style="width: 15%">
+                                            <label>Preço Unitário</label>
+                                            <input id="preco_unitario" type="text" name="preco_unitario"
+                                                value="{{ preco_unitario|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" readonly>
 
-                                            <label for="{{ form.ano.id_for_label }}">Valor</label>
-                                            <input type="text" id="{{ form.ano.id_for_label }}"
-                                                name="{{ form.ano.name }}"
-                                                value="{{ form.ano.value|default_if_none:'' }}"
-                                                placeholder="R$ 0,00" style="width: 20%;">
+                                            <label>Quantidade</label>
+                                            <input id="quantidade" type="text" name="quantidade"
+                                                value="{{ quantidade|default_if_none:'' }}" onblur="atualizaValor();"
+                                                placeholder="Qtd" style="width: 15%">
+
+                                            <label>Valor</label>
+                                            <input id="valor" type="text" name="valor"
+                                                value="{{ valor|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" readonly>
                                         </div>
 
                                         <div class="row-cadastro-form">
-                                            <label for="{{ form.edicao.id_for_label }}">Forma de Pagamento</label>
-                                            <input type="text" id="{{ form.edicao.id_for_label }}"
-                                                name="{{ form.edicao.name }}"
-                                                value="{{ form.edicao.value|default_if_none:'' }}" placeholder="Cartão, Dinheiro"
-                                                style="width: 15;">
+                                            <label>Forma de Pagamento</label>
+                                            <select name="forma_pagamento" style="width: 15%;">
+                                                <option value="">Selecione...</option>
+                                                <option value="0">Dinheiro</option>
+                                                <option value="1">Cartão de Cŕedito</option>
+                                            </select>
 
-                                            <label for="{{ form.genero.id_for_label }}">Desconto</label>
-                                            <input type="text" id="{{ form.genero.id_for_label }}"
-                                                name="{{ form.genero.name }}"
-                                                value="{{ form.genero.value|default_if_none:'' }}"
-                                                placeholder="R$ 0,00" style="width: 20%;">
+                                            <label>Desconto</label>
+                                            <input id="desconto" type="text" name="desconto"
+                                                value="{{ desconto|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" onblur="atualizaValorFinal();">
 
-                                            <label for="{{ form.edicao.id_for_label }}">Valor Total</label>
-                                            <input type="text" id="{{ form.edicao.id_for_label }}"
-                                                name="{{ form.edicao.name }}"
-                                                value="{{ form.edicao.value|default_if_none:'' }}" placeholder="R$ 0,00"
-                                                style="width: 15;">
+                                            <label>Valor Total</label>
+                                            <input id="valor_total" type="text" name="valor_total"
+                                                value="{{ valor_total|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 15;" readonly>
                                         </div>
 
                                         <div class="row-cadastro-btn" style="margin-top: 40px;">
                                             <button type="reset">Limpar</button>
-                                            <button type="button" id="book-register-confirm">Cadastrar</button>
+                                            <button type="button" id="lending-register-confirm">Cadastrar</button>
                                         </div>
                                     </form>
                                 </div>
@@ -218,10 +214,41 @@
     </div>
 
     <script>
+
+        function obterPrecoUnitario() {
+            var select = document.getElementById("select_book");
+            var option = select.options[select.selectedIndex];
+            var preco_unitario = option.getAttribute('preco_unitario');
+            console.log(preco_unitario)
+            var field_preco_unitario = document.getElementById('preco_unitario');
+            field_preco_unitario.value = preco_unitario;
+        }
+
+        function atualizaValor() {
+            var quantidade = document.getElementById('quantidade').value;
+            var preco_unitario = document.getElementById('preco_unitario').value;
+            var valor_campo = document.getElementById('valor');
+            if (quantidade != '' && preco_unitario != '') {
+                valor_campo.value = quantidade * parseFloat(preco_unitario) + ",00";
+            }
+        }
+
+        function atualizaValorFinal() {
+            var valor = document.getElementById('valor').value;
+            var desconto = document.getElementById('desconto').value;
+            var valor_total_campo = document.getElementById('valor_total');
+            if (valor >= desconto && valor != '' && desconto != '') {
+                valor_total_campo.value = parseInt(valor) - parseInt(desconto) + ",00";
+            }
+        }
+
+    </script>
+
+    <script>
         //Referencia do Botao
-        let $btnBookCadConfirm = document.getElementById('book-register-confirm');
+        let $btnLendingCadConfirm = document.getElementById('lending-register-confirm');
         //Tela de Confirmação
-        $btnBookCadConfirm.addEventListener('click', async function () {
+        $btnLendingCadConfirm.addEventListener('click', async function () {
             Swal.fire({
                 'title': 'Confirmação!',
                 'icon': 'warning',
@@ -232,7 +259,7 @@
                 'showCloseButton': true,
             }).then((result) => {
                 if (result.value) {
-                    sendRegisterBook();
+                    sendRegisterLending();
                 }
             })
         })
@@ -244,7 +271,7 @@
             let $valid = document.getElementById('valid').value;
             console.log($valid);
             if ($valid == "sim") {
-                showSuccessRegisterBook();
+                showSuccessRegisterLending();
             }
         }
     </script>

@@ -2,6 +2,9 @@ from django.forms import ModelForm
 from .models import Emprestimo
 from django import forms
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class Cadastro_Emprestimo(ModelForm):
 
     def __init__(self, *args, **kwargs):
@@ -18,6 +21,9 @@ class Cadastro_Emprestimo(ModelForm):
     class Meta:
         model = Emprestimo
         fields = '__all__'
+        widgets = {
+            'data_devolucao': DateInput(format='%Y-%m-%d')
+        }
 
 
     
