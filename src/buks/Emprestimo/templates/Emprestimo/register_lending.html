@@ -215,6 +215,7 @@
 
     <script>
 
+        // Função para atualizar o valor do preco_unitario do livro selecionado no formulário.
         function obterPrecoUnitario() {
             var select = document.getElementById("select_book");
             var option = select.options[select.selectedIndex];
@@ -224,6 +225,7 @@
             field_preco_unitario.value = preco_unitario;
         }
 
+        // Função para atualizar o valor do empréstimo no formulário de acordo com a quantidade fornecida.
         function atualizaValor() {
             var quantidade = document.getElementById('quantidade').value;
             var preco_unitario = document.getElementById('preco_unitario').value;
@@ -233,6 +235,7 @@
             }
         }
 
+        // Função para atualizar o valor final do empréstimo no formulário de acordo com o desconto fornecido.
         function atualizaValorFinal() {
             var valor = document.getElementById('valor').value;
             var desconto = document.getElementById('desconto').value;

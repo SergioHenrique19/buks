@@ -4,6 +4,8 @@ from Cliente.models import Cliente
 
 # Create your models here.
 
+# Classe que define uma tabela no banco de dados representando um Empréstimo,
+# que pode ser cadastrado, alterado, consultado e excluído do sistema.
 class Emprestimo(models.Model):
 
     PAYMENT_CHOICES = {

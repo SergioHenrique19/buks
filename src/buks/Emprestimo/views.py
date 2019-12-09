@@ -9,7 +9,7 @@ from datetime import datetime as dt
 
 # Create your views here.
 
-
+# Função que realiza o cadastro de um empréstimo no sistema.
 @login_required
 def register_lending(request):
 
@@ -97,6 +97,8 @@ def register_lending(request):
         return render(request, 'Emprestimo/register_lending.html', data)
 
 
+# Função que exibe em uma tabela todos os empréstimos cadastrados no sistema,
+# e possibilita a busca e seleção de um empréstimo a ser atualizado/alterado.
 @login_required
 def update_lending(request):
 
@@ -130,6 +132,8 @@ def update_lending(request):
     return render(request, 'Emprestimo/update_lending.html', data)
 
 
+# Função que realiza a atualização/alteração dos dados de um empréstimo ja
+# cadastrado no sistema.
 @login_required
 def update_lending_form(request, pk):
 
@@ -265,6 +269,8 @@ def update_lending_form(request, pk):
     return render(request, 'Emprestimo/update_lending_form.html', data)
 
 
+# Função que exibe em uma tabela todos os empréstimos cadastrados no sistema,
+# e possibilita a busca e seleção de um empréstimo a ser consultado.
 @login_required
 def read_lending(request):
 
@@ -287,6 +293,8 @@ def read_lending(request):
     return render(request, 'Emprestimo/read_lending.html', data)
 
 
+# Função que exibe uma página com as informações de um empréstimo
+# consultado pelo usuário do sistema.
 @login_required
 def read_lending_form(request, pk):
 
@@ -312,6 +320,8 @@ def read_lending_form(request, pk):
     return render(request, 'Emprestimo/read_lending_form.html', data)
 
 
+# Função que exibe em uma tabela todos os empréstimos cadastrados no sistema,
+# e possibilita a busca e seleção de um empréstimo a ser excluído.
 @login_required
 def delete_lending(request):
 

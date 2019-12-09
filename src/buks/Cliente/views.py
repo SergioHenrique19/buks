@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+# Função que realiza o cadastro de um cliente no sistema.
 @login_required
 def register_client(request):
     
@@ -22,6 +23,8 @@ def register_client(request):
         return render(request, 'Cliente/register_client.html', data)
 
 
+# Função que exibe em uma tabela todos os clientes cadastrados no sistema, 
+# e possibilita a busca e seleção de um cliente a ser atualizado/alterado.
 @login_required
 def update_client(request):
 
@@ -54,6 +57,8 @@ def update_client(request):
     return render(request, 'Cliente/update_client.html', data)
 
 
+# Função que realiza a atualização/alteração dos dados de um cliente ja
+# cadastrado no sistema
 @login_required
 def update_client_form(request, pk):
 
@@ -75,6 +80,8 @@ def update_client_form(request, pk):
     return render(request, 'Cliente/update_client_form.html', data)
 
 
+# Função que exibe em uma tabela todos os clientes cadastrados no sistema,
+# e possibilita a busca e seleção de um cliente a ser consultado.
 @login_required
 def read_client(request):
     
@@ -96,6 +103,8 @@ def read_client(request):
     return render(request, 'Cliente/read_client.html', data)
 
 
+# Função que exibe uma página com as informações de um cliente
+# consultado pelo usuário do sistema.
 @login_required
 def read_client_form(request, pk):
 

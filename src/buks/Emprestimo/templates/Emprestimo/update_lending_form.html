@@ -210,6 +210,7 @@
 
     <script>
 
+        // Função para atualizar o valor do empréstimo no formulário de acordo com a quantidade fornecida.
         function atualizaValor() {
             var quantidade = document.getElementById('quantidade').value;
             var preco_unitario = document.getElementById('preco_unitario').value;
@@ -220,6 +221,7 @@
             atualizaValorFinal()
         }
 
+        // Função para atualizar o valor final do empréstimo no formulário de acordo com o desconto fornecido.
         function atualizaValorFinal() {
             var valor = document.getElementById('valor').value;
             var desconto = document.getElementById('desconto').value;
