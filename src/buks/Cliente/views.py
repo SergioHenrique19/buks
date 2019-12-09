@@ -11,7 +11,6 @@ def register_client(request):
     form = Cadastro_Cliente(request.POST or None)
 
     if form.is_valid():
-        print('aaa')
         request.session['validRegisterClient'] = "sim"
         form.save()
         return render(request, 'Cliente/register_client.html', data)

@@ -23,6 +23,10 @@ function sendUpdateClient() {
   document.formUpdateClient.submit();
 }
 
+function sendRegisterLending() {
+  document.formRegisterLending.submit();
+}
+
 //Tela de Sucesso do cadastro de Livro
 function showSuccessRegisterBook() {
   Swal.fire({
@@ -72,4 +76,13 @@ function showSuccessUpdateClient() {
     'timer': 3000
   })
 }
- 
+
+//Tela de Sucesso do cadastro de Empréstimo
+function showSuccessRegisterLending() {
+  Swal.fire({
+    'title': 'Empréstimo Realizado com Sucesso!',
+    'icon': 'success',
+    'showCloseButton': false,
+    'timer': 3000
+  })
+}
