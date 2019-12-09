@@ -100,10 +100,12 @@
 					<h1>Emprestimo - opções</h1>
 					<div class="livro-option">
 						<div class="livro-option-button">
-							<a href="/register/book"><button type="button" class="btn-book" id="defaultBook">Cadastrar</button></a>
+							<a href="/register/book"><button type="button" class="btn-book"
+									id="defaultBook">Cadastrar</button></a>
 							<a href="/update/book"><button type="button" class="btn-book">Alterar</button></a>
 							<a href="/read/book"><button type="button" class="btn-book">Consultar</button></a>
-							<a href="/delete/book"><button type="button" class="btn-book activeButton">Excluir</button></a>
+							<a href="/delete/book"><button type="button"
+									class="btn-book activeButton">Excluir</button></a>
 						</div>
 					</div>
 					<div class="livro-pages">
@@ -114,34 +116,35 @@
 									<div class="row-consulta">
 										<form method="POST">
 											{% csrf_token %}
-											<input type="text" id="valid" value="{{ request.session.validDeleteBook }}">
-											<input name="search_book" type="text">
+											<input type="text" id="valid"
+												value="{{ request.session.validDeleteLending }}">
+											<input name="search_lending" type="text">
 											<button type="submit">&#128269</button>
 										</form>
 									</div>
 									<div class="search-result-procura">
 										<table>
-                        <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Livro</th>
-                              <th>Cliente</th>
-                              <th>Atualizar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {%  for Emprestimo in Emprestimos %}
-                            <tr>
-                                <td>{{ "ID: "}} {{ Emprestimo.id }}</td>
-                                <td>{{ "Livro: "}} {{ Emprestimo.livro }}</td>
-                                <td>{{ "Cliente: "}} {{ Emprestimo.cliente }}</td>
-                                <td><a href="{% url 'Emprestimos:update_book_form' Emprestimo.id %}"
-                                        style="color: black;">&#9998</a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>Livro</th>
+													<th>Cliente</th>
+													<th>Atualizar</th>
+												</tr>
+											</thead>
+											<tbody>
+												{%  for Emprestimo in Emprestimos %}
+												<tr>
+													<td>{{ "ID: "}} {{ Emprestimo.id_emprestimo }}</td>
+													<td>{{ "Livro: "}} {{ Emprestimo.livro }}</td>
+													<td>{{ "Cliente: "}} {{ Emprestimo.cliente }}</td>
+													<td><button type="button" id="{{ Emprestimo.id_emprestimo }}"
+															onClick="enviarPOST(this.id)"
+															style="color: black;">&times;</button></td>
+												</tr>
+												{% endfor %}
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
@@ -163,7 +166,7 @@
 
 		<form method="POST" name="formDeleteLending">
 			{% csrf_token %}
-			<input name="id" type="text" id="delete-lending" readonly>
+			<input name="id_emprestimo" type="text" id="delete-lending" readonly>
 		</form>
 
 	</div>
@@ -172,8 +175,8 @@
 		//Função para Enviar o post da deleção
 		function enviarPOST(id) {
 			document.getElementById('delete-lending').value = id;
-			let $btnBookDeleteConfirm = document.getElementById(id);
-			console.log($btnBookDeleteConfirm);
+			let $btnLendingDeleteConfirm = document.getElementById(id);
+			console.log($btnLendingDeleteConfirm);
 			Swal.fire({
 				'title': 'Confirmação!',
 				'icon': 'warning',
@@ -184,7 +187,7 @@
 				'showCloseButton': true,
 			}).then((result) => {
 				if (result.value) {
-					sendDeleteBook();
+					sendDeleteLending();
 				}
 			})
 		}
@@ -196,7 +199,7 @@
 			let $valid = document.getElementById('valid').value;
 			console.log($valid);
 			if ($valid == "sim") {
-				showSuccessDeleteBook();
+				showSuccessDeleteLending();
 			}
 		}
 	</script>

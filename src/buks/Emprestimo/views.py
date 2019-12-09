@@ -60,8 +60,12 @@ def register_lending(request):
                                                        valor=valor, forma_pagamento=forma_pagamento, desconto=desconto,
                                                        valor_total=valor_total)
                 emprestimo.save()
-                livro.quantidade -= quantidade
+                print(livro)
+                print(livro.quantidade)
+                livro.quantidade = livro.quantidade - int(quantidade)
                 livro.save()
+                print(livro)
+                print(livro.quantidade)
                 request.session['validRegisterLending'] = "sim"
 
             return render(request, 'Emprestimo/register_lending.html', data)
@@ -306,3 +310,48 @@ def read_lending_form(request, pk):
     data['valor_total'] = emprestimo.valor_total
 
     return render(request, 'Emprestimo/read_lending_form.html', data)
+
+
+@login_required
+def delete_lending(request):
+
+    data = {}
+
+    try:
+        if request.session['validDeleteLending'] == "sim":
+            request.session['validDeleteLending'] = "nao"
+    except:
+        None
+    if request.method == "POST":
+        try:
+            pk = request.POST['id_emprestimo']
+            print(pk)
+            emprestimo = Emprestimo.objects.get(pk=pk)
+            emprestimo.delete()
+            request.session['validDeleteLending'] = 'sim'
+
+            data['Emprestimos'] = Emprestimo.objects.all()
+
+            return render(request, 'Emprestimo/delete_lending.html', data)
+        except:
+            None
+        try:
+            id_emprestimo = request.POST['search_lending']
+            if id_emprestimo != "":
+                emprestimo = Emprestimo.objects.filter(
+                    id_emprestimo=id_emprestimo)
+                quant_emprestimos = Emprestimo.objects.filter(
+                    id_emprestimo=id_emprestimo).count()
+                if quant_emprestimos == 0:
+                    return render(request, 'Emprestimo/update_lending.html', data)
+                else:
+                    data['Emprestimos'] = emprestimo
+                    return render(request, 'Emprestimo/delete_lending.html', data)
+        except:
+            None
+
+    request.session['validDeleteLending'] = "nao"
+
+    data['Emprestimos'] = Emprestimo.objects.all()
+
+    return render(request, 'Emprestimo/delete_lending.html', data)
