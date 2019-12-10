@@ -6,12 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">]
 
     <!--Folhas Principais-->
 
     <link rel="stylesheet" href="{% static 'css/principal.css' %}">
-    <title>Consultar Cliente</title>
+    <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+    <title>Consultar Empréstimo</title>
 </head>
 
 <body>
@@ -60,6 +61,7 @@
 
         <!--Fim do Container Principal-->
 
+
         <!--Aba de Opções-->
 
         <div class="list">
@@ -70,8 +72,8 @@
                 <ul>
                     <li><a class="tablinks" href="/" title="Estante" id="defaultopenPage">Estantes</a></li>
                     <li><a class="tablinks" href="/register/book" title="Livros">Livros</a></li>
-                    <li><a class="tablinks active" href="/register/client" title="Clientes">Clientes</a></li>
-                    <li><a class="tablinks" href="/register/lending" title="Empréstimo">Empréstimo</a></li>
+                    <li><a class="tablinks" href="/register/client" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks  active" href="/register/lending" title="Empréstimo">Empréstimo</a></li>
                     <!-- <li><a class="tablinks" title="Compras">Compras</a></li>
                     <li><a class="tablinks" title="Recebimento">Recebimento</a></li>
                     <li><a class="tablinks" title="Funcionarios">Funcionarios</a></li> -->
@@ -79,7 +81,7 @@
             </div>
 
             <!--Fim do Conteudo das listas-->
-        
+
         </div>
 
         <!--Fim das Aba de Opções-->
@@ -88,32 +90,33 @@
 
         <div class="content">
 
-            <!--Opação dos Clientes-->
+            <!--Opação dos emprestimo-->
 
             <div class="tabcontent" id="livro-content">
-
-                <!--Clientes-->
-
                 <div class="livro">
-                    <h1>Clientes - opções</h1>
+                    <h1>Empreśtimos - opções</h1>
                     <div class="livro-option">
                         <div class="livro-option-button">
-                            <a href="/register/client"><button type="button" class="btn-book" id="defaultBook">Cadastrar
-                                    cliente</button></a>
-                            <a href="/update/client"><button type="button" class="btn-book">Alterar cliente</button></a>
-                            <a href="/read/client"><button type="button" class="btn-book activeButton">Consultar
-                                    cliente</button></a>
+                            <a href="/register/lending"><button type="button" class="btn-book"
+                                    id="defaultBook">Cadastrar</button></a>
+                            <a href="/update/lending"><button type="button" class="btn-book">Alterar</button></a>
+                            <a href="/read/lending"><button type="button"
+                                    class="btn-book activeButton">Consultar</button></a>
+                            <a href="/delete/lending"><button type="button" class="btn-book">Excluir</button></a>
                         </div>
                     </div>
+
+                    <!--Emprestimos-->
+
                     <div class="livro-pages">
                         <div class="livroContent" id="consultaLivro">
                             <div class="consulta-content">
                                 <div class="consulta-content-content">
-                                    <label for="">Digite o email do cliente que deseja consultar</label>
+                                    <label for="">Digite ID do Empréstimo que deseja consultar</label>
                                     <div class="row-consulta">
                                         <form method="POST">
                                             {% csrf_token %}
-                                            <input name="search_client" type="text">
+                                            <input name="search_lending" type="text">
                                             <button type="submit">&#128269</button>
                                         </form>
                                     </div>
@@ -121,18 +124,20 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>Nome</th>
-                                                    <th>Email</th>
-                                                    <th>Informações</th>
+                                                    <th>ID</th>
+                                                    <th>Livro</th>
+                                                    <th>Cliente</th>
+                                                    <th>Atualizar</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {%  for Cliente in Clientes %}
+                                                {%  for Emprestimo in Emprestimos %}
                                                 <tr>
-                                                    <td>{{ "Nome: "}} {{ Cliente.nome }}</td>
-                                                    <td>{{ "Email: "}} {{ Cliente.email }}</td>
-                                                    <td><a href="{% url 'Cliente:read_client_form' Cliente.cpf %}"
-                                                            style="color: black;">&#8505</a>
+                                                    <td>{{ "ID: "}} {{ Emprestimo.id_emprestimo }}</td>
+                                                    <td>{{ "Livro: "}} {{ Emprestimo.livro }}</td>
+                                                    <td>{{ "Cliente: "}} {{ Emprestimo.cliente }}</td>
+                                                    <td><a href="{% url 'Emprestimo:read_lending_form' Emprestimo.id_emprestimo %}"
+                                                            style="color: black;">&#9998</a>
                                                     </td>
                                                 </tr>
                                                 {% endfor %}
@@ -143,12 +148,19 @@
                             </div>
                         </div>
                     </div>
+                    <!--Fim dos emprestimos-->
                 </div>
-                <!--Fim dos Clientes-->
             </div>
-            <!--Fim das Opação dos livros-->
+            <!--Fim das Opação dos emprestimos-->
         </div>
         <!--Fim do container Principal-->
     </div>
+
+    <!--Scripts do Projeto-->
+
+    <script src="{% static 'js/alertas.js' %}"></script>
+    <script src="{% static 'js/sweetalert2.min.js' %}"></script>
+
 </body>
+
 </html>

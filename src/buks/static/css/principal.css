@@ -460,12 +460,18 @@ li a:hover {
     font-size: 14px;
 }
 
-.row-cadastro-form input[type="date"] {
+.row-cadastro-form input[type="date"], input[type="datetime-local"] {
     color: var(--chocolate);
     background: var(--white) url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
     color: grey;
 }
 
+.row-cadastro-form select {
+    border: none;
+    border-bottom: 2px var(--chocolate) solid;
+    background: var(--white);
+    color: var(--black);
+}
 
 .switch {
     position: relative;
