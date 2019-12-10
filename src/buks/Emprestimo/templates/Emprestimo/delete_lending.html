@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="{% static 'css/principal.css' %}">
 	<link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
 
-	<title>Excluir Livro</title>
+	<title>Excluir Emprestimo</title>
 </head>
 
 <body>
@@ -71,9 +71,9 @@
 			<div class="list-content">
 				<ul>
 					<li><a class="tablinks" href="/" title="Estante" id="defaultopenPage">Estantes</a></li>
-					<li><a class="tablinks active" href="/register/book" title="Livros">Livros</a></li>
+					<li><a class="tablinks" href="/register/book" title="Livros">Livros</a></li>
 					<li><a class="tablinks" href="/register/client" title="Clientes">Clientes</a></li>
-					<li><a class="tablinks" href="/register/lending" title="Empréstimo">Empréstimo</a></li>
+					<li><a class="tablinks active" href="/register/lending" title="Empréstimo">Empréstimo</a></li>
 					<!-- <li><a class="tablinks" title="Compras">Compras</a></li>
 					<li><a class="tablinks" title="Recebimento">Recebimento</a></li>
 					<li><a class="tablinks" title="Funcionarios">Funcionarios</a></li> -->
@@ -90,35 +90,35 @@
 
 		<div class="content">
 
-			<!--Opação dos livros-->
+			<!--Opação dos Emprestimo-->
 
 			<div class="tabcontent" id="livro-content">
 
-				<!--Livros-->
+				<!--Emprestimo-->
 
 				<div class="livro">
-					<h1>Livros - opções</h1>
+					<h1>Emprestimo - opções</h1>
 					<div class="livro-option">
 						<div class="livro-option-button">
-							<a href="/register/book"><button type="button" class="btn-book" id="defaultBook">Cadastrar
-									livro</button></a>
-							<a href="/update/book"><button type="button" class="btn-book">Alterar livro</button></a>
-							<a href="/read/book"><button type="button" class="btn-book">Consultar
-									livro</button></a>
-							<a href="/delete/book"><button type="button" class="btn-book activeButton">Excluir
-									livro</button></a>
+							<a href="/register/lending"><button type="button" class="btn-book"
+									id="defaultBook">Cadastrar</button></a>
+							<a href="/update/lending"><button type="button" class="btn-book">Alterar</button></a>
+							<a href="/read/lending"><button type="button" class="btn-book">Consultar</button></a>
+							<a href="/delete/lending"><button type="button"
+									class="btn-book activeButton">Excluir</button></a>
 						</div>
 					</div>
 					<div class="livro-pages">
 						<div class="livroContent" id="consultaLivro">
 							<div class="consulta-content">
 								<div class="consulta-content-content">
-									<label for="">Digite o título do livro que deseja excluir</label>
+									<label for="">Digite o ID do Emprestimo que deseja excluir</label>
 									<div class="row-consulta">
 										<form method="POST">
 											{% csrf_token %}
-											<input type="text" id="valid" value="{{ request.session.validDeleteBook }}">
-											<input name="search_book" type="text">
+											<input type="text" id="valid"
+												value="{{ request.session.validDeleteLending }}">
+											<input name="search_lending" type="text">
 											<button type="submit">&#128269</button>
 										</form>
 									</div>
@@ -126,17 +126,19 @@
 										<table>
 											<thead>
 												<tr>
-													<th>ISBN</th>
-													<th>Titulo</th>
-													<th>Informações</th>
+													<th>ID</th>
+													<th>Livro</th>
+													<th>Cliente</th>
+													<th>Atualizar</th>
 												</tr>
 											</thead>
 											<tbody>
-												{%  for Livro in Livros %}
+												{%  for Emprestimo in Emprestimos %}
 												<tr>
-													<td>{{ "ISBN: "}} {{ Livro.isbn }}</td>
-													<td>{{ "Título: "}} {{ Livro.titulo }}</td>
-													<td><button type="button" id="{{ Livro.isbn }}"
+													<td>{{ "ID: "}} {{ Emprestimo.id_emprestimo }}</td>
+													<td>{{ "Livro: "}} {{ Emprestimo.livro }}</td>
+													<td>{{ "Cliente: "}} {{ Emprestimo.cliente }}</td>
+													<td><button type="button" id="{{ Emprestimo.id_emprestimo }}"
 															onClick="enviarPOST(this.id)"
 															style="color: black;">&times;</button></td>
 												</tr>
@@ -150,21 +152,21 @@
 					</div>
 				</div>
 
-				<!--Fim dos Livros-->
+				<!--Fim dos emprestimo-->
 
 			</div>
 
-			<!--Fim das Opação dos livros-->
+			<!--Fim das Opação dos emprestimo-->
 
 		</div>
 
 		<!--Fim do container Principal-->
 
-		<!--Envia a chave primária da exclusão do Livro-->
+		<!--Envia a chave primária da exclusão do emprestimo-->
 
-		<form method="POST" name="formDeleteBook">
+		<form method="POST" name="formDeleteLending">
 			{% csrf_token %}
-			<input name="isbn" type="text" id="delete-book" readonly>
+			<input name="id_emprestimo" type="text" id="delete-lending" readonly>
 		</form>
 
 	</div>
@@ -172,9 +174,9 @@
 	<script>
 		//Função para Enviar o post da deleção
 		function enviarPOST(id) {
-			document.getElementById('delete-book').value = id;
-			let $btnBookDeleteConfirm = document.getElementById(id);
-			console.log($btnBookDeleteConfirm);
+			document.getElementById('delete-lending').value = id;
+			let $btnLendingDeleteConfirm = document.getElementById(id);
+			console.log($btnLendingDeleteConfirm);
 			Swal.fire({
 				'title': 'Confirmação!',
 				'icon': 'warning',
@@ -185,7 +187,7 @@
 				'showCloseButton': true,
 			}).then((result) => {
 				if (result.value) {
-					sendDeleteBook();
+					sendDeleteLending();
 				}
 			})
 		}
@@ -197,7 +199,7 @@
 			let $valid = document.getElementById('valid').value;
 			console.log($valid);
 			if ($valid == "sim") {
-				showSuccessDeleteBook();
+				showSuccessDeleteLending();
 			}
 		}
 	</script>

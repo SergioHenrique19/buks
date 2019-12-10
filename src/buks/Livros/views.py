@@ -129,10 +129,10 @@ def delete_book(request):
         None
     if request.method == "POST":
         try:
-            request.session['validDeleteBook'] = 'sim'
             pk = request.POST['isbn']
             livro = Livro.objects.get(pk=pk)
             livro.delete()
+            request.session['validDeleteBook'] = 'sim'
 
             data['Livros'] = Livro.objects.all()
 
@@ -145,10 +145,10 @@ def delete_book(request):
                 livros = Livro.objects.filter(titulo=name_book)
                 quant_livros = Livro.objects.filter(titulo=name_book).count()
                 if quant_livros == 0:
-                    return render(request, 'Livros/update_book.html', data)
+                    return render(request, 'Livros/delete_book.html', data)
                 else:
                     data['Livros'] = livros
-                    return render(request, 'Livros/update_book.html', data)
+                    return render(request, 'Livros/delete_book.html', data)
         except:
             None
 
@@ -157,4 +157,3 @@ def delete_book(request):
     data['Livros'] = Livro.objects.all()
 
     return render(request, 'Livros/delete_book.html', data)
-    
