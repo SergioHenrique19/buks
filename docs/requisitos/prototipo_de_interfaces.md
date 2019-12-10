@@ -9,39 +9,39 @@
 
 ---
 ### Menu principal
-![menu principal](./interfaces/menu_principal.png)
+![menu principal](./interfaces/1.png)
 
 ---
 ### Cadastrar livro
-![cadastrar livro](./interfaces/cadastrar_livro.png)
+![cadastrar livro](./interfaces/2.png)
 
 ---
 ### Alterar livro
-![alterar livro](./interfaces/alterar_livro.png)
+![alterar livro](./interfaces/3.png)
 
 ---
 ### Consultar livro
-![consultar livro](./interfaces/consultar_livro.png)
+![consultar livro](./interfaces/4.png)
 
 ---
 ### Excluir livro
-![excluir livro](./interfaces/excluir_livro.png)
+![excluir livro](./interfaces/5.png)
 
 ---
 ### Emprestar livro
-![emprestar livro](./interfaces/emprestar_livro.png)
+![emprestar livro](./interfaces/9.png)
 
 ---
 ### Alterar empréstimo
-![alterar emprestimo](./interfaces/alterar_emprestimo.png)
+![alterar emprestimo](./interfaces/10.png)
 
 ---
 ### Consultar emprestimo
-![consultar emprestimo](./interfaces/consultar_emprestimo.png)
+![consultar emprestimo](./interfaces/11.png)
 
 ---
 ### Excluir empréstimo
-![excluir emprestimo](./interfaces/excluir_emprestimo.png)
+![excluir emprestimo](./interfaces/12.png)
 
 ---
 ### Comprar livro
@@ -53,12 +53,12 @@
 
 ---
 ### Cadastrar cliente
-![cadastrar cliente](./interfaces/cadastrar_cliente.png)
+![cadastrar cliente](./interfaces/6.png)
 
 ---
 ### Alterar cliente
-![alterar cliente](./interfaces/alterar_cliente.png)
+![alterar cliente](./interfaces/7.png)
 
 ---
 ### Consultar cliente
-![consultar cliente](./interfaces/consultar_cliente.png)
+![consultar cliente](./interfaces/8.png)
