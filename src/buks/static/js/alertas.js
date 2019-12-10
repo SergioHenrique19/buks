@@ -23,6 +23,21 @@ function sendUpdateClient() {
   document.formUpdateClient.submit();
 }
 
+//Função para Enviar o formulário do registro do Empréstimo
+function sendRegisterLending() {
+  document.formRegisterLending.submit();
+}
+
+//Função para Enviar o formulário da alteração do Empréstimo
+function sendUpdateLending() {
+  document.formUpdateLending.submit();
+}
+
+//Função para enviar o id_emprestimo de deleção do Empréstimo
+function sendDeleteLending() {
+  document.formDeleteLending.submit();
+}
+
 //Tela de Sucesso do cadastro de Livro
 function showSuccessRegisterBook() {
   Swal.fire({
@@ -72,4 +87,33 @@ function showSuccessUpdateClient() {
     'timer': 3000
   })
 }
- 
+
+//Tela de Sucesso do cadastro de Empréstimo
+function showSuccessRegisterLending() {
+  Swal.fire({
+    'title': 'Empréstimo Realizado com Sucesso!',
+    'icon': 'success',
+    'showCloseButton': false,
+    'timer': 3000
+  })
+}
+
+//Tela de Sucesso da alteração de Empréstimo
+function showSuccessUpdateLending() {
+  Swal.fire({
+    'title': 'Empréstimo Alterado com Sucesso!',
+    'icon': 'success',
+    'showCloseButton': false,
+    'timer': 3000
+  })
+}
+
+//Tela de Sucesso da Exclusão de Emprestimo
+function showSuccessDeleteLending() {
+  Swal.fire({
+    'title': 'Empréstimo Excluído com Sucesso!',
+    'icon': 'success',
+    'showCloseButton': false,
+    'timer': 3000
+  })
+}

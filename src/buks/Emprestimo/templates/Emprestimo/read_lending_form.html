@@ -1,0 +1,248 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Folhas Principais-->
+
+    <link rel="stylesheet" href="{% static 'css/principal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sweetalert2.min.css' %}">
+    <title>Consultar Empréstimo</title>
+</head>
+
+<body>
+
+    <!--Container Principal-->
+
+    <div class="container">
+
+        <!--Header Principal-->
+
+        <div class="header">
+
+            <!--Barra de Navegação-->
+
+            <div class="nav">
+
+                <!--Navegação Esquerda-->
+
+                <div class="nav-left">
+                    <div class="nav-text-primary">
+                        <style type="text/css">
+                            a:link {
+                                text-decoration: none;
+                            }
+                        </style>
+                        <a href="/" class="text-decoration">
+                            <h2>Buks</h2>
+                            <p>A biblioteca que move o mundo...</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!--Navegação Direita-->
+
+                <div class="nav-right">
+                    <div class="my-account">
+                        <img src="{% static '/images/my-account.svg' %}" alt="">
+                        <p>Minha Conta</p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Fim da Barra de Navegação-->
+
+        </div>
+
+        <!--Fim do Container Principal-->
+
+        <!--Aba de Opções-->
+
+        <div class="list">
+
+            <!--Conteudo das listas-->
+
+            <div class="list-content">
+                <ul>
+                    <li><a class="tablinks" href="/" title="Estante" id="defaultopenPage">Estantes</a></li>
+                    <li><a class="tablinks" href="/register/book" title="Livros">Livros</a></li>
+                    <li><a class="tablinks" href="/register/client" title="Clientes">Clientes</a></li>
+                    <li><a class="tablinks active" href="/register/lending" title="Empréstimo">Empréstimo</a></li>
+                    <!-- <li><a class="tablinks" title="Compras">Compras</a></li>
+                    <li><a class="tablinks" title="Recebimento">Recebimento</a></li>
+                    <li><a class="tablinks" title="Funcionarios">Funcionarios</a></li> -->
+                </ul>
+            </div>
+
+            <!--Fim do Conteudo das listas-->
+
+        </div>
+
+        <!--Fim das Aba de Opções-->
+
+        <!--Inicio do container Principal-->
+
+        <div class="content">
+
+            <!--Opação dos Emprestimo-->
+
+            <div class="tabcontent" id="livro-content">
+
+                <!--Emprestimo-->
+
+                <div class="livro">
+                    <h1>Empréstimo - opções</h1>
+                    <div class="livro-option">
+                        <div class="livro-option-button">
+                            <a href="/register/lending"><button type="button" class="btn-book"
+                                    id="defaultBook">Cadastrar
+                                </button></a>
+                            <a href="/update/lending"><button type="button" class="btn-book">Alterar</button></a>
+                            <a href="/read/lending"><button type="button"
+                                    class="btn-book activeButton">Consultar</button></a>
+                            <a href="/delete/lending"><button type="button" class="btn-book">Excluir</button></a>
+                        </div>
+                    </div>
+                    <div class="livro-pages">
+                        <div class="livroContent" id="cadastroLivro">
+                            <div class="cadastro-content">
+                                <div class="cadastro-form">
+                                    <form method="POST" enctype="multipart/form-data" name="formReadLending">
+                                        {% csrf_token %}
+                                        <div class="row-cadastro-form">
+                                            <label>ID</label>
+                                            <input type="text" id="id_emprestimo" name="id_emprestimo"
+                                                value="{{ id_emprestimo|default_if_none:'' }}" placeholder="Código ID"
+                                                style="width: 40%;" readonly>
+                                            <!-- {{ form.isbn.errors }} -->
+                                            <!-- 
+                                            <label for="{{ form.capa.id_for_label }}">Data e Hora</label>
+                                            <input type="datetime-local" id="{{ form.capa.id_for_label }}"
+                                                name="{{ form.capa.name }}"
+                                                value="{{ form.capa.value|default_if_none:'' }}" style="width: 20%;"
+                                                readonly> -->
+                                            <!-- {{ form.capa.errors }} -->
+
+                                            <label for="{{ form.data_devolucao.id_for_label }}">Data de
+                                                Devolução</label>
+                                            <a style="width: 30%;">{{ form.data_devolucao }}</a>
+                                            <!-- {{ form.capa.errors }} -->
+                                        </div>
+
+
+                                        <div class=" row-cadastro-form">
+                                            <label>Cliente</label>
+                                            <select name="cliente" id="cliente" style="width: 40%;">
+                                                <option value="{{ cliente.cpf|default_if_none:'' }}">
+                                                    {{ cliente.nome }}
+                                                </option>
+                                            </select readonly>
+
+                                            <label for="">Livro</label>
+                                            <select name="livro" id="livro" style="width: 40%;">
+                                                <option value="{{ livro.isbn|default_if_none:'' }}">{{ livro.isbn }}
+                                                </option>
+                                            </select readonly>
+                                        </div>
+
+                                        <div class="row-cadastro-form">
+                                            <label for="{{ form.editora.id_for_label }}">Preço Unitário</label>
+                                            <input type="text" id="preco_unitario" name="preco_unitario"
+                                                value="{{ preco_unitario|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" readonly>
+
+                                            <label>Quantidade</label>
+                                            <input type="text" id="quantidade" name="quantidade"
+                                                value="{{ quantidade|default_if_none:0 }}" placeholder="Qtd"
+                                                style="width: 15%" onblur="atualizaValor();" readonly>
+
+                                            <label>Valor</label>
+                                            <input type="text" id="valor" name="valor"
+                                                value="{{ valor|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" readonly>
+                                        </div>
+
+                                        <div class="row-cadastro-form">
+                                            <label>Forma de Pagamento</label>
+                                            <select name="forma_pagamento" style="width: 15%;">
+                                                <option value="{{ forma_pagamento }}">{{ nome_pagamento }}</option>
+                                            </select readonly>
+
+                                            <label>Desconto</label>
+                                            <input type="text" id="desconto" name="desconto"
+                                                value="{{ desconto|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 20%;" onblur="atualizaValorFinal();" readonly>
+
+                                            <label>Valor Total</label>
+                                            <input type="text" id="valor_total" name="valor_total"
+                                                value="{{ valor_total|default_if_none:'' }}" placeholder="R$ 0,00"
+                                                style="width: 15;" readonly>
+                                        </div>
+
+                                        <div class="row-cadastro-btn" style="margin-top: 40px;">
+                                            <a href="/read/lending"><button type="button">Voltar</button></a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Fim dos Livros-->
+
+            </div>
+
+            <!--Fim das Opação dos livros-->
+
+        </div>
+
+        <!--Fim do container Principal-->
+
+    </div>
+
+    <script>
+        //Referencia do Botao
+        let $btnBookCadConfirm = document.getElementById('book-register-confirm');
+        //Tela de Confirmação
+        $btnBookCadConfirm.addEventListener('click', async function () {
+            Swal.fire({
+                'title': 'Confirmação!',
+                'icon': 'warning',
+                'text': 'Deseja confirmar essa operação?',
+                'cancelButtonText': 'Não',
+                'confirmButtonText': 'Sim',
+                'showCancelButton': true,
+                'showCloseButton': true,
+            }).then((result) => {
+                if (result.value) {
+                    sendRegisterBook();
+                }
+            })
+        })
+    </script>
+
+    <script>
+        //Função para tratamento da tela de cofirmação
+        window.onload = function () {
+            let $valid = document.getElementById('valid').value;
+            console.log($valid);
+            if ($valid == "sim") {
+                showSuccessRegisterBook();
+            }
+        }
+    </script>
+
+    <!--Scripts do Projeto-->
+
+    <script src="{% static 'js/alertas.js' %}"></script>
+    <script src="{% static 'js/sweetalert2.min.js' %}"></script>
+
+</body>
+
+</html>
