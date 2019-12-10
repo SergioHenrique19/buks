@@ -18,3 +18,6 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.cpf
+
+    def get_adress(self):
+        return self.email
