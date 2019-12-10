@@ -6,12 +6,15 @@ from .models import Cliente
 
 class ClientTest(unittest.TestCase):
 
-    def setUp(self):
-        self.teste = Cliente.objects.create(cpf="121.212.232-18", nome="Otávio Augusto de Sousa Resende",
-                                         data_nasc="1998-01-27", email="otavioresende1998@gmail.com",
-                                         celular="37998371524")
-
     def testAdress(self):
+        self.teste = Cliente.objects.create(cpf="128.987.176-73", nome="Otávio Augusto de Sousa Resende",
+                                    data_nasc="1998-01-27", email="otavioresende1998@gmail.com",
+                                    celular="37998371524")
         self.assertEquals(self.teste.get_adress(), "otavioresende1998@gmail.com")
+        
 
-
+    def testeIdade(self):   
+        self.teste = Cliente.objects.create(cpf="128.987.176-74", nome="Otávio Augusto de Sousa Resende",
+                                    data_nasc="1998-01-27", email="otavioresende1998@gmail.com",
+                                    celular="37998371524")
+        self.assertFalse(self.teste.maior_que(17))

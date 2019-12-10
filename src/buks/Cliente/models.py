@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date as dt
 
 # Create your models here.
 
@@ -21,3 +22,10 @@ class Cliente(models.Model):
 
     def get_adress(self):
         return self.email
+
+    def maior_que(self, idade):
+        if idade == 18: 
+            return True
+        else:
+            return False
+
